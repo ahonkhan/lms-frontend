@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+
+.pt-initial {
+  @apply pt-[65px];
+}
+
+.site-container {
+  @apply px-4 lg:px-[75px] xl:px-[150px] 2xl:px-[250px];
+}
+
+.mt-section {
+  @apply mt-[65px];
+}
+
+.nav-link.active {
+  @apply relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    @apply bg-primary duration-500 rounded;
+    animation: navlink 500ms forwards;
+  }
+}
+
+@keyframes navlink {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
