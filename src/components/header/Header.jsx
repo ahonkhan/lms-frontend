@@ -13,7 +13,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`h-[65px] flex items-center site-container w-full z-[100]  bg-base-3 bg-opacity-90`}
+      className={`h-[65px] sticky top-0 flex items-center site-container w-full z-[100]  bg-base-3 bg-opacity-90`}
     >
       <nav className="h-full justify-between flex items-center w-full">
         <div className="logo">
