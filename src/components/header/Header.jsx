@@ -3,17 +3,16 @@ import logo from "../../assets/logo.png";
 import { BiBell, BiMenu, BiUser } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
 import { menuData } from "../../data/menuData";
+import { GrFormNextLink } from "react-icons/gr";
 
 export const Header = () => {
-  //   const menus = [
-  //     { name: "হোম", path: "/" },
-  //     { name: "কোর্স সমূহ", path: "/courses" },
-  //     { name: "যোগাযোগ", path: "/contact" },
-  //   ];
+  const setCurrentRoute = () => {
+    localStorage.setItem("currentRoute", location.href);
+  };
 
   return (
     <header
-      className={`h-[65px] sticky top-0 flex items-center site-container w-full z-[100]  bg-base-3 bg-opacity-90`}
+      className={`h-[65px] sticky top-0 flex items-center site-container w-full z-[300]  bg-base-3 bg-opacity-90`}
     >
       <nav className="h-full justify-between flex items-center w-full">
         <div className="logo">
@@ -41,6 +40,17 @@ export const Header = () => {
           <Link to={"/"} className="text-xl">
             <BiUser />
           </Link>
+          <Link
+            onClick={setCurrentRoute}
+            to={"/dashboard"}
+            className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-4 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
+          >
+            Dashboard
+            <span className="text-xl group-hover:translate-x-1 duration-300">
+              <GrFormNextLink />
+            </span>
+          </Link>
+
           <button className="text-xl lg:hidden">
             <BiMenu />
           </button>

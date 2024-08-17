@@ -4,9 +4,9 @@ import LandingLayout from "./layout/LandingLayout";
 import HomePage from "./pages/home/HomePage";
 import { CoursePage } from "./pages/courses/CoursePage";
 import { CourseDetailsPage } from "./pages/course-details/CourseDetailsPage";
+import { DashboardLayout } from "./layout/DashboardLayout";
 
 function App() {
-  
   return (
     <>
       <Routes>
@@ -15,6 +15,10 @@ function App() {
           <Route path="/services" element={<></>} />
           <Route path="/courses" element={<CoursePage />} />
           <Route path="/courses/:slug" element={<CourseDetailsPage />} />
+        </Route>
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<>Home</>} />
+          <Route path="/dashboard/courses" element={<>Courses</>} />
         </Route>
       </Routes>
     </>

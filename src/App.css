@@ -51,3 +51,7 @@ html {
 .swiper-pagination-bullet {
   @apply bg-primary !important;
 }
+
+.dashboard-navlink.active {
+  @apply bg-base-3;
+}

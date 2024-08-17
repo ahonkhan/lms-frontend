@@ -20,7 +20,7 @@ export const CourseCategory = () => {
             <GrFormPrevious />
           </button>
         </div>
-        <div className="prev absolute top-[50%] z-[200] -translate-y-[50%] right-0">
+        <div className="prev absolute top-[50%] z-[100] -translate-y-[50%] right-0">
           <button
             onClick={() => swiperRef.current?.slideNext()}
             className="bg-white w-10 h-10 rounded-full flex items-center justify-center active:scale-[0.98] text-gray-900 text-xl"
