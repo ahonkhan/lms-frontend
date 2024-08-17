@@ -11,6 +11,9 @@
 .mt-section {
   @apply mt-[65px];
 }
+.py-section {
+  @apply py-[65px];
+}
 
 .nav-link.active {
   @apply relative;
