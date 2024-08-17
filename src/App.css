@@ -41,9 +41,6 @@
   margin-top: 20px !important;
 } */
 
-.swiper-wrapper {
-  padding-bottom: 40px;
-}
 .swiper-pagination-bullet {
   @apply bg-primary !important;
 }
