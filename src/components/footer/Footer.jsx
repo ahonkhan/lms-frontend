@@ -6,35 +6,41 @@ const Footer = () => {
   const date = new Date();
   const links = [
     {
+      id: 1,
       name: "ব্লগ",
       path: "/",
     },
     {
+      id: 2,
       name: "ক্রেডিট",
       path: "/",
     },
     {
+      id: 3,
       name: "সাকসেস স্টোরি",
       path: "/",
     },
     {
+      id: 4,
       name: "আমাদের সম্পর্কে",
       path: "/",
     },
     {
+      id: 5,
       name: "প্রাইভেসি পলিসি",
       path: "/",
     },
     {
+      id: 6,
       name: "টার্মস ও কন্ডিশনস",
       path: "/",
     },
   ];
   const socials = [
-    { name: "facebook", icon: <FaFacebook />, url: "" },
-    { name: "youtube", icon: <FaYoutube />, url: "" },
-    { name: "linkedin", icon: <AiFillLinkedin />, url: "" },
-    { name: "github", icon: <FaGithub />, url: "" },
+    { id: 1, name: "facebook", icon: <FaFacebook />, url: "" },
+    { id: 2, name: "youtube", icon: <FaYoutube />, url: "" },
+    { id: 3, name: "linkedin", icon: <AiFillLinkedin />, url: "" },
+    { id: 4, name: "github", icon: <FaGithub />, url: "" },
   ];
   return (
     <footer className="mt-section relative">
@@ -71,12 +77,12 @@ const Footer = () => {
             </h2>
             <ul className="mt-2 2xl:text-lg">
               {links.map((item, index) => (
-                <li key={index}>
+                <li key={item?.id}>
                   <Link
-                    to={item.path}
+                    to={item?.path}
                     className="hover:text-primary duration-500"
                   >
-                    {item.name}
+                    {item?.name}
                   </Link>
                 </li>
               ))}
@@ -85,13 +91,13 @@ const Footer = () => {
           <div className="follow">
             <h2 className="text-lg 2xl:text-xl font-medium">আমাদের তথ্যঃ </h2>
             <ul className="mt-2 2xl:text-lg flex gap-x-3">
-              {socials.map((item, index) => (
-                <li key={index}>
+              {socials.map((item) => (
+                <li key={item?.id}>
                   <Link
-                    to={item.url}
+                    to={item?.url}
                     className="hover:text-primary duration-500"
                   >
-                    {item.icon}
+                    {item?.icon}
                   </Link>
                 </li>
               ))}
