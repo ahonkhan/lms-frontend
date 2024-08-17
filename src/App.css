@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
-
+html {
+  scroll-behavior: smooth;
+}
 .pt-initial {
   @apply pt-[65px];
 }
@@ -7,7 +9,9 @@
 .site-container {
   @apply px-4 lg:px-[75px] xl:px-[150px] 2xl:px-[250px];
 }
-
+.sub-container {
+  @apply lg:px-8 xl:px-10 2xl:px-16;
+}
 .mt-section {
   @apply mt-[65px];
 }

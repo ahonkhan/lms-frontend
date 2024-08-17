@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SectionTitle } from "../../components/typography/Typography";
 import { CourseCard } from "../../components/card/CourseCard";
 
 export const CoursePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="site-container mt-section">

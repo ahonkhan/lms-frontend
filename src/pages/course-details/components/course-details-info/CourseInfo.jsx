@@ -5,7 +5,7 @@ export const CourseInfo = () => {
   return (
     <div className="bg-base-2">
       <div className="site-container py-section">
-        <div className="grid grid-cols-2 gap-x-10 lg:px-8 xl:px-10 2xl:px-16">
+        <div className=" md:grid-cols-2 gap-y-8 flex md:grid flex-col-reverse gap-x-10 sub-container">
           <div className="left-details">
             <h1 className="text-2xl font-medium text-white">
               Frontend Web Development with TailwindCss, JavaScript & React
@@ -27,7 +27,7 @@ export const CourseInfo = () => {
               </button>
               <p className="text-lg">৳ ৫,৫০০</p>
             </div>
-            <div className="more-info mt-8 flex items-center gap-4">
+            <div className="more-info text-sm md:text-base mt-8 flex items-center gap-4">
               <p className="px-4 py-2 bg-base-3 rounded-sm text-white">
                 152 modules
               </p>

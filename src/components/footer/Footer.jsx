@@ -105,7 +105,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex items-center py-4 justify-center">
-          <p>কপিরাইট ©{date.getFullYear()} অহন খান। সর্বস্বত্ব সংরক্ষিত।</p>
+          <p>
+            কপিরাইট ©{date.getFullYear()} <span className="text-primary">অহন খান</span>। সর্বস্বত্ব
+            সংরক্ষিত।
+          </p>
         </div>
       </div>
     </footer>

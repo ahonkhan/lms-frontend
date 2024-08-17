@@ -6,6 +6,7 @@ import { CoursePage } from "./pages/courses/CoursePage";
 import { CourseDetailsPage } from "./pages/course-details/CourseDetailsPage";
 
 function App() {
+  
   return (
     <>
       <Routes>
