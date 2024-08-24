@@ -55,3 +55,7 @@ html {
 .dashboard-navlink.active {
   @apply bg-base-3;
 }
+
+.db-container {
+  @apply px-4 lg:px-4 xl:px-5;
+}
