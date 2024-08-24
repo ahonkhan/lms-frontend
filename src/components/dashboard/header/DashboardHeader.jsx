@@ -1,4 +1,5 @@
 import React from "react";
+import { GoSearch } from "react-icons/go";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { LuBell } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -13,12 +14,18 @@ export const DashboardHeader = () => {
               <RxHamburgerMenu />
             </button>
           </div>
-          <div className="search w-[800px] bg-base-3 bg-opacity-25 rounded-lg ">
+
+          <div className="search relative w-[800px] bg-base-3 bg-opacity-25 rounded-lg ">
             <input
               type="text"
-              className="w-full outline-none px-4 focus:outline-base-3 rounded-lg border-transparent py-2 h-10 bg-transparent"
+              placeholder="Find your best course..."
+              className="w-full outline-none  px-4 pr-12 focus:outline-base-3 rounded-lg border-transparent py-2 h-10 bg-transparent"
             />
+            <button className="absolute flex items-center -translate-y-[50%] -translate-x-[50%] justify-center text-white text-xl top-[50%] right-0 w-8">
+              <GoSearch />
+            </button>
           </div>
+
           <menu className="nav-menu flex shrink-0 items-center justify-end gap-x-5">
             <div className="notification flex items-center">
               <button className="text-xl text-white">
