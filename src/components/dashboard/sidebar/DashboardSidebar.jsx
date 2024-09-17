@@ -56,7 +56,7 @@ const DashboardSidebar = () => {
     },
   ];
   return (
-    <aside className="bg-base-2 border-r border-base-3 border-opacity-30 w-full md:w-[280px] 2xl:w-[310px] fixed z-[250] top-0 left-0 ">
+    <aside className="bg-base-2 -translate-x-full md:translate-x-0 border-r border-base-3 border-opacity-30 w-full md:w-[280px] 2xl:w-[310px] fixed z-[250] top-0 left-0 ">
       <div className="h-screen flex flex-col justify-between px-8">
         <div className="dashboard-header gap-x-6 shrink-0 flex items-center justify-center py-8">
           <Link
