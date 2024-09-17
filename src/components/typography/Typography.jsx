@@ -13,3 +13,12 @@ export const SectionTitle = ({ children }) => {
     </div>
   );
 };
+export const SectionTitleDashboard = ({ children }) => {
+  return (
+    <div className="section-title text-start">
+      <h1 className="text-light text-[18px] md:text-[22px] lg:text-[28px] font-semibold">
+        {children}
+      </h1>
+    </div>
+  );
+};

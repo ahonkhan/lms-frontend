@@ -15,6 +15,10 @@ html {
 .mt-section {
   @apply mt-[65px];
 }
+
+.mt-content {
+  @apply mt-[25px];
+}
 .py-section {
   @apply py-[65px];
 }

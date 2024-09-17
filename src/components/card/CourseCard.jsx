@@ -34,3 +34,32 @@ export const CourseCard = () => {
     </div>
   );
 };
+
+export const RecentCourseCard = () => {
+  return (
+    <div className="course-card cursor-pointer flex items-center  gap-x-4 px-4 py-4 rounded-lg bg-base-2">
+      <div className="course-photo w-[40%]">
+        <img
+          src="https://dream-software.vercel.app/_next/static/media/frontend-hero.af921956.png"
+          alt=""
+          className="rounded"
+        />
+      </div>
+      <div className="course-details  w-[60%]">
+        <h3 className="title text-base xl:text-lg leading-6">
+          Frontend Web development with react js
+        </h3>
+        <div className="progress-area mt-2 md:mt-3 lg:mt-4 flex items-center gap-x-4">
+          <div className="progress w-full">
+            <div className="w-full bg-primary bg-opacity-20 rounded-full h-2.5 ">
+              <div className="bg-primary w-[45%] h-2.5 rounded-full"></div>
+            </div>
+          </div>
+          <div className="module-total hidden  lg:block shrink-0">
+            <p className="text-sm">85/276 Modules</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
