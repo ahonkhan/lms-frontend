@@ -37,7 +37,10 @@ export const CourseCard = () => {
 
 export const RecentCourseCard = () => {
   return (
-    <div className="course-card cursor-pointer flex items-center  gap-x-4 px-4 py-4 rounded-lg bg-base-2">
+    <Link
+      to={"/dashboard/courses/frontend-web-dev-batch-5"}
+      className="course-card cursor-pointer flex items-center  gap-x-4 px-4 py-4 rounded-lg bg-base-2"
+    >
       <div className="course-photo w-[40%]">
         <img
           src="https://dream-software.vercel.app/_next/static/media/frontend-hero.af921956.png"
@@ -60,6 +63,6 @@ export const RecentCourseCard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
