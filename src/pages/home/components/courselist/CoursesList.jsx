@@ -1,8 +1,8 @@
 import React from "react";
 import { SectionTitle } from "../../../../components/typography/Typography";
 import { CourseCategory } from "./CourseCategory";
-import { GrFormNextLink } from "react-icons/gr";
 import { CourseCard } from "../../../../components/card/CourseCard";
+
 export const CoursesList = () => {
   return (
     <section id="teaching-process">

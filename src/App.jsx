@@ -6,6 +6,7 @@ import { CoursePage } from "./pages/courses/CoursePage";
 import { CourseDetailsPage } from "./pages/course-details/CourseDetailsPage";
 import { DashboardLayout } from "./layout/DashboardLayout";
 import { DashboardHome } from "./pages/dashboard/home/DashboardHome";
+import DashboardCourses from "./pages/dashboard/courses/DashboardCourses";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
-          <Route path="/dashboard/courses" element={<>Courses</>} />
+          <Route path="/dashboard/courses" element={<DashboardCourses />} />
         </Route>
       </Routes>
     </>
