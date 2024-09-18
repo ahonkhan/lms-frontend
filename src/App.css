@@ -64,3 +64,19 @@ html {
   @apply px-4 lg:px-4 xl:px-5;
 }
 
+.module-item-video.active {
+  @apply border-primary !important;
+}
+
+.from-bottom {
+  animation: fromBottom 300ms ease-in-out forwards;
+}
+
+@keyframes fromBottom {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -34,9 +34,7 @@ const ModuleCard = () => {
       </div>
       <div className="module-card-action mt-4">
         <Link
-          to={
-            "/dashboard/courses/frontend-web-dev-batch-5/classroom?module=2&lesson=1"
-          }
+          to={"/dashboard/courses/frontend-web-dev-batch-5/classroom/vm1lL2"}
           className="bg-primary  active:scale-[0.98] duration-150 group gap-x-2 px-16 w-full rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
         >
           Go to classroom
@@ -47,3 +45,6 @@ const ModuleCard = () => {
 };
 
 export default ModuleCard;
+
+
+

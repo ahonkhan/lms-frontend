@@ -28,7 +28,7 @@ function App() {
             element={<DashboardCoursesDetails />}
           />
           <Route
-            path="/dashboard/courses/:slug/classroom"
+            path="/dashboard/courses/:slug/classroom/:module"
             element={<ClassRoom />}
           />
         </Route>
