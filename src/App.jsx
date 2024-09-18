@@ -8,6 +8,7 @@ import { DashboardLayout } from "./layout/DashboardLayout";
 import { DashboardHome } from "./pages/dashboard/home/DashboardHome";
 import DashboardCourses from "./pages/dashboard/courses/DashboardCourses";
 import DashboardCoursesDetails from "./pages/dashboard/course-details/DashboardCoursesDetails";
+import ClassRoom from "./pages/dashboard/course-details/components/classroom/ClassRoom";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route
             path="/dashboard/courses/:slug"
             element={<DashboardCoursesDetails />}
+          />
+          <Route
+            path="/dashboard/courses/:slug/classroom"
+            element={<ClassRoom />}
           />
         </Route>
       </Routes>

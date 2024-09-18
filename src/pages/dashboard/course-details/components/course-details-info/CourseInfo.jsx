@@ -5,7 +5,7 @@ export const CourseInfo = () => {
   return (
     <div className="bg-base-3 bg-opacity-40 rounded-lg">
       <div className="sub-container py-section">
-        <div className="flex flex-col lg:flex-row px-5 gap-y-5 lg:items-center lg:justify-between">
+        <div className="flex flex-col-reverse lg:flex-row px-5 gap-y-5 lg:items-center lg:justify-between">
           <div className="left-details flex flex-col justify-center lg:w-[50%]">
             <h1 className="text-2xl font-medium text-white">
               Frontend Web Development with TailwindCss, JavaScript & React
