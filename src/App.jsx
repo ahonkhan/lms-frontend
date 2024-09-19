@@ -9,10 +9,22 @@ import { DashboardHome } from "./pages/dashboard/home/DashboardHome";
 import DashboardCourses from "./pages/dashboard/courses/DashboardCourses";
 import DashboardCoursesDetails from "./pages/dashboard/course-details/DashboardCoursesDetails";
 import ClassRoom from "./pages/dashboard/course-details/components/classroom/ClassRoom";
+import ClassModule from "./pages/dashboard/course-details/components/classroom/ClassModule";
+import { useContext, useState } from "react";
+import { GetRootContext } from "./contexts/RootContext";
 
 function App() {
+  const rootContext = useContext(GetRootContext);
   return (
     <>
+      <div
+        className={`course-modules ${
+          rootContext?.moduleOpen ? "translate-y-0" : "translate-y-full"
+        } duration-500 xl:hidden z-[400] fixed top-0 left-0 h-full shrink-0 w-full rounded-md  bg-base-3`}
+      >
+        <ClassModule />
+      </div>
+
       <Routes>
         <Route element={<LandingLayout />}>
           <Route path="/" element={<HomePage />} />
