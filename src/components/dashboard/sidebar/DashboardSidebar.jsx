@@ -1,13 +1,14 @@
 import React from "react";
-import { IoArrowBack, IoSettingsOutline } from "react-icons/io5";
-import { LuFolderOpenDot } from "react-icons/lu";
-import { MdStackedLineChart } from "react-icons/md";
 import {
-  PiCertificate,
+  IoArrowBack,
+  IoSettingsOutline,
+} from "react-icons/io5";
+
+import {
   PiGraduationCapDuotone,
-  PiNotepad,
 } from "react-icons/pi";
 import { RiHomeSmile2Line } from "react-icons/ri";
+import { TiBookmark } from "react-icons/ti";
 import { Link, NavLink } from "react-router-dom";
 
 const DashboardSidebar = () => {
@@ -26,30 +27,13 @@ const DashboardSidebar = () => {
     },
     {
       id: 3,
-      title: "Lessons",
-      path: "/dashboard/lessons",
-      icon: <PiNotepad />,
+      title: "Cv Builder",
+      path: "/dashboard/cv-builder",
+      icon: <TiBookmark />,
     },
-    {
-      id: 3,
-      title: "Assessments",
-      path: "/dashboard/lessons",
-      icon: <MdStackedLineChart />,
-    },
+
     {
       id: 4,
-      title: "Certification",
-      path: "/dashboard/certification",
-      icon: <PiCertificate />,
-    },
-    {
-      id: 5,
-      title: "Resources",
-      path: "/dashboard/resources",
-      icon: <LuFolderOpenDot />,
-    },
-    {
-      id: 5,
       title: "Settings",
       path: "/dashboard/settings",
       icon: <IoSettingsOutline />,
