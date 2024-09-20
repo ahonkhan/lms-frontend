@@ -12,6 +12,7 @@ import ClassRoom from "./pages/dashboard/course-details/components/classroom/Cla
 import ClassModule from "./pages/dashboard/course-details/components/classroom/ClassModule";
 import { useContext, useState } from "react";
 import { GetRootContext } from "./contexts/RootContext";
+import Settings from "./pages/dashboard/settings/Settings";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -35,6 +36,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="/dashboard/courses" element={<DashboardCourses />} />
+          <Route path="/dashboard/settings" element={<Settings />} />
           <Route
             path="/dashboard/courses/:slug"
             element={<DashboardCoursesDetails />}
