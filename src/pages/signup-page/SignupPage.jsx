@@ -56,7 +56,7 @@ const SignupPage = () => {
           <div class="text-sm font-light text-[#818793] ">
             Already have an account?{" "}
             <Link to="/login" class="font-medium text-primary hover:underline">
-              Logins
+              Login
             </Link>
           </div>
         </form>
