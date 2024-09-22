@@ -6,7 +6,7 @@ export const InputFieldWithLabel = ({
   placeholder = "",
 }) => {
   return (
-    <div className="input-field">
+    <div className="input-field w-full">
       <p className="py-1">{label}</p>
       <input
         placeholder={placeholder}
