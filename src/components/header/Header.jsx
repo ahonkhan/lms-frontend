@@ -37,7 +37,7 @@ export const Header = () => {
           <Link to={"/"} className="text-xl ">
             <BiBell />
           </Link>
-          <Link to={"/"} className="text-xl">
+          <Link to={"/login"} className="text-xl">
             <BiUser />
           </Link>
           <Link
