@@ -16,6 +16,7 @@ import Settings from "./pages/dashboard/settings/Settings";
 import LoginPage from "./pages/auth/login-page/LoginPage";
 import SignupPage from "./pages/auth/signup-page/SignupPage";
 import SendResetLinkPage from "./pages/auth/send-reset-link/SendResetLinkPage";
+import ResetPasswordPage from "./pages/auth/reset-password/ResetPasswordPage";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/reset-password-link" element={<SendResetLinkPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/courses" element={<CoursePage />} />
           <Route path="/courses/:slug" element={<CourseDetailsPage />} />
         </Route>
