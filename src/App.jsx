@@ -13,8 +13,9 @@ import ClassModule from "./pages/dashboard/course-details/components/classroom/C
 import { useContext, useState } from "react";
 import { GetRootContext } from "./contexts/RootContext";
 import Settings from "./pages/dashboard/settings/Settings";
-import LoginPage from "./pages/login-page/LoginPage";
-import SignupPage from "./pages/signup-page/SignupPage";
+import LoginPage from "./pages/auth/login-page/LoginPage";
+import SignupPage from "./pages/auth/signup-page/SignupPage";
+import SendResetLinkPage from "./pages/auth/send-reset-link/SendResetLinkPage";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/services" element={<></>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/reset-password-link" element={<SendResetLinkPage />} />
           <Route path="/courses" element={<CoursePage />} />
           <Route path="/courses/:slug" element={<CourseDetailsPage />} />
         </Route>

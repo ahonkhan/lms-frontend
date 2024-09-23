@@ -1,5 +1,5 @@
 import React from "react";
-import { InputFieldWithLabel } from "../../components/input-field/InputField";
+import { InputFieldWithLabel } from "../../../components/input-field/InputField";
 import { Link } from "react-router-dom";
 
 const SignupPage = () => {

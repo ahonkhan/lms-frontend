@@ -1,5 +1,5 @@
 import React from "react";
-import { InputFieldWithLabel } from "../../components/input-field/InputField";
+import { InputFieldWithLabel } from "../../../components/input-field/InputField";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
@@ -25,7 +25,7 @@ const LoginPage = () => {
           <div class="text-sm font-light text-[#818793] ">
             Don&apos;t remember your password?{" "}
             <Link
-              to={"/reset-password"}
+              to={"/reset-password-link"}
               class="font-medium text-primary hover:underline"
             >
               Reset now
