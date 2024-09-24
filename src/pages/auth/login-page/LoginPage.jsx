@@ -25,7 +25,7 @@ const LoginPage = () => {
           <div class="text-sm font-light text-[#818793] ">
             Don&apos;t remember your password?{" "}
             <Link
-              to={"/reset-password-link"}
+              to={"/reset-password"}
               class="font-medium text-primary hover:underline"
             >
               Reset now

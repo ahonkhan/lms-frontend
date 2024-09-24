@@ -36,8 +36,11 @@ function App() {
           <Route path="/services" element={<></>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/reset-password-link" element={<SendResetLinkPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/reset-password" element={<SendResetLinkPage />} />
+          <Route
+            path="/reset-password/:token"
+            element={<ResetPasswordPage />}
+          />
           <Route path="/courses" element={<CoursePage />} />
           <Route path="/courses/:slug" element={<CourseDetailsPage />} />
         </Route>
