@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  IoArrowBack,
-  IoSettingsOutline,
-} from "react-icons/io5";
+import { IoArrowBack, IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineCardGiftcard } from "react-icons/md";
 
-import {
-  PiGraduationCapDuotone,
-} from "react-icons/pi";
+import { PiGraduationCapDuotone } from "react-icons/pi";
 import { RiHomeSmile2Line } from "react-icons/ri";
 import { TiBookmark } from "react-icons/ti";
 import { Link, NavLink } from "react-router-dom";
@@ -27,13 +23,19 @@ const DashboardSidebar = () => {
     },
     {
       id: 3,
+      title: "Transactions",
+      path: "/dashboard/transactions",
+      icon: <MdOutlineCardGiftcard />,
+    },
+    {
+      id: 4,
       title: "Cv Builder",
       path: "/dashboard/cv-builder",
       icon: <TiBookmark />,
     },
 
     {
-      id: 4,
+      id: 5,
       title: "Settings",
       path: "/dashboard/settings",
       icon: <IoSettingsOutline />,
