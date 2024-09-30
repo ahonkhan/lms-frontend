@@ -18,6 +18,7 @@ import SignupPage from "./pages/auth/signup-page/SignupPage";
 import SendResetLinkPage from "./pages/auth/send-reset-link/SendResetLinkPage";
 import ResetPasswordPage from "./pages/auth/reset-password/ResetPasswordPage";
 import MyOrdersPage from "./pages/dashboard/my-orders/MyOrdersPage";
+import CategoryPage from "./pages/dashboard/category/CategoryPage";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -49,6 +50,8 @@ function App() {
           <Route index element={<DashboardHome />} />
           <Route path="/dashboard/courses" element={<DashboardCourses />} />
           <Route path="/dashboard/settings" element={<Settings />} />
+          <Route path="/dashboard/category" element={<CategoryPage />} />
+          <Route path="/dashboard/users" element={<>users</>} />
           <Route path="/dashboard/transactions" element={<MyOrdersPage />} />
           <Route
             path="/dashboard/courses/:slug"

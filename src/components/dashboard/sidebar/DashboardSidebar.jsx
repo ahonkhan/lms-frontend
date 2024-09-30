@@ -1,4 +1,6 @@
 import React from "react";
+import { BiCategoryAlt } from "react-icons/bi";
+import { HiOutlineUsers } from "react-icons/hi";
 import { IoArrowBack, IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineCardGiftcard } from "react-icons/md";
 
@@ -14,6 +16,12 @@ const DashboardSidebar = () => {
       title: "Dashboard",
       path: "/dashboard",
       icon: <RiHomeSmile2Line />,
+    },
+    {
+      id: 5,
+      title: "Category",
+      path: "/dashboard/category",
+      icon: <BiCategoryAlt />,
     },
     {
       id: 2,
@@ -35,7 +43,13 @@ const DashboardSidebar = () => {
     },
 
     {
-      id: 5,
+      id: 6,
+      title: "Users",
+      path: "/dashboard/users",
+      icon: <HiOutlineUsers />,
+    },
+    {
+      id: 7,
       title: "Settings",
       path: "/dashboard/settings",
       icon: <IoSettingsOutline />,

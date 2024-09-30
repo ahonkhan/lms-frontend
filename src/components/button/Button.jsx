@@ -14,3 +14,11 @@ export const BackButton = () => {
     </button>
   );
 };
+
+export const ButtonPrimary = ({ children }) => {
+  return (
+    <button className="bg-primary px-8 py-2 duration-200  text-white rounded active:scale-[0.98]">
+      {children}
+    </button>
+  );
+};
