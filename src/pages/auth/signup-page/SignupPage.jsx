@@ -3,12 +3,13 @@ import { InputFieldWithLabel } from "../../../components/input-field/InputField"
 import { Link } from "react-router-dom";
 import authApiSlice from "../../../redux/api/authApiSlice";
 import toast from "react-hot-toast";
+import { ButtonLoader } from "../../../components/loader/Loader";
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
-  const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
 
   // handle send otp
@@ -60,8 +61,6 @@ const SignupPage = () => {
     if (password !== retypePassword) {
       toast.error("Password not matched!");
     }
-    console.log(fullName);
-
     try {
       await signup({ email, password, verificationCode, fullName });
     } catch (error) {
@@ -127,20 +126,7 @@ const SignupPage = () => {
                 Send code
               </button>
 
-              {signupOTPLoading && (
-                <div className="absolute w-full h-full bg-opacity-60 bg-black flex items-center justify-center z-[10] top-0 left-0 rounded-lg">
-                  <svg
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="mr-2 animate-spin"
-                    viewBox="0 0 1792 1792"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
-                  </svg>
-                </div>
-              )}
+              {signupOTPLoading && <ButtonLoader />}
             </div>
           </div>
           <InputFieldWithLabel
@@ -171,20 +157,7 @@ const SignupPage = () => {
             >
               Signup
             </button>
-            {signupLoading && (
-              <div className="absolute w-full h-full bg-opacity-60 bg-black flex items-center justify-center z-[10] top-0 left-0 rounded-lg">
-                <svg
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="mr-2 animate-spin"
-                  viewBox="0 0 1792 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
-                </svg>
-              </div>
-            )}
+            {signupLoading && <ButtonLoader />}
           </div>
           <div className="text-sm font-light text-[#818793] ">
             Already have an account?{" "}

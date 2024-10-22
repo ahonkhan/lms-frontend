@@ -15,9 +15,12 @@ export const BackButton = () => {
   );
 };
 
-export const ButtonPrimary = ({ children }) => {
+export const ButtonPrimary = ({ children, ...props }) => {
   return (
-    <button className="bg-primary px-8 py-2 duration-200  text-white rounded active:scale-[0.98]">
+    <button
+      {...props}
+      className="bg-primary w-full px-8 py-2 duration-200  text-white rounded-lg active:scale-[0.98]"
+    >
       {children}
     </button>
   );

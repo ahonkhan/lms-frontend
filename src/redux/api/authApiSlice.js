@@ -30,6 +30,16 @@ const authApiSlice = createApi({
         },
       }),
     }),
+    login: builder.mutation({
+      query: ({ email, password }) => ({
+        url: "/login",
+        method: "post",
+        body: {
+          email: email,
+          password: password,
+        },
+      }),
+    }),
   }),
 });
 
