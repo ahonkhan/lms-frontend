@@ -19,11 +19,13 @@ import SendResetLinkPage from "./pages/auth/send-reset-link/SendResetLinkPage";
 import ResetPasswordPage from "./pages/auth/reset-password/ResetPasswordPage";
 import MyOrdersPage from "./pages/dashboard/my-orders/MyOrdersPage";
 import CategoryPage from "./pages/dashboard/category/CategoryPage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const rootContext = useContext(GetRootContext);
   return (
     <>
+      <Toaster />
       <div
         className={`course-modules ${
           rootContext?.moduleOpen ? "translate-y-0" : "translate-y-full"

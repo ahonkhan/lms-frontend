@@ -3,11 +3,14 @@ import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { RootContext } from "./contexts/RootContext.jsx";
+import ReduxProvider from "./redux/app/ReduxProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <RootContext>
-      <App />
-    </RootContext>
+    <ReduxProvider>
+      <RootContext>
+        <App />
+      </RootContext>
+    </ReduxProvider>
   </BrowserRouter>
 );
