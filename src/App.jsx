@@ -10,7 +10,7 @@ import DashboardCourses from "./pages/dashboard/courses/DashboardCourses";
 import DashboardCoursesDetails from "./pages/dashboard/course-details/DashboardCoursesDetails";
 import ClassRoom from "./pages/dashboard/course-details/components/classroom/ClassRoom";
 import ClassModule from "./pages/dashboard/course-details/components/classroom/ClassModule";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GetRootContext } from "./contexts/RootContext";
 import Settings from "./pages/dashboard/settings/Settings";
 import LoginPage from "./pages/auth/login-page/LoginPage";
@@ -20,9 +20,16 @@ import ResetPasswordPage from "./pages/auth/reset-password/ResetPasswordPage";
 import MyOrdersPage from "./pages/dashboard/my-orders/MyOrdersPage";
 import CategoryPage from "./pages/dashboard/category/CategoryPage";
 import { Toaster } from "react-hot-toast";
+import AuthLessWrapper from "./layout/AuthLessWrapper";
+import AuthWrapper from "./layout/AuthWrapper";
+import { GetAuthContext } from "./contexts/AuthContext";
 
 function App() {
   const rootContext = useContext(GetRootContext);
+  const authContext = useContext(GetAuthContext);
+  if (authContext.isLoading) {
+    return <>loading...</>;
+  }
   return (
     <>
       <Toaster />
@@ -38,17 +45,49 @@ function App() {
         <Route element={<LandingLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<></>} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/reset-password" element={<SendResetLinkPage />} />
+          <Route
+            path="/login"
+            element={
+              <AuthLessWrapper>
+                <LoginPage />
+              </AuthLessWrapper>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <AuthLessWrapper>
+                <SignupPage />
+              </AuthLessWrapper>
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              <AuthLessWrapper>
+                <SendResetLinkPage />
+              </AuthLessWrapper>
+            }
+          />
           <Route
             path="/reset-password/:token"
-            element={<ResetPasswordPage />}
+            element={
+              <AuthLessWrapper>
+                <ResetPasswordPage />
+              </AuthLessWrapper>
+            }
           />
           <Route path="/courses" element={<CoursePage />} />
           <Route path="/courses/:slug" element={<CourseDetailsPage />} />
         </Route>
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route
+          path="/dashboard"
+          element={
+            <AuthWrapper>
+              <DashboardLayout />
+            </AuthWrapper>
+          }
+        >
           <Route index element={<DashboardHome />} />
           <Route path="/dashboard/courses" element={<DashboardCourses />} />
           <Route path="/dashboard/settings" element={<Settings />} />

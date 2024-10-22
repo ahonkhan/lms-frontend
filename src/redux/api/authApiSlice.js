@@ -7,6 +7,10 @@ const authApiSlice = createApi({
     baseUrl: `${API_BASE_URL}/auth`,
     prepareHeaders: (headers) => {
       headers.set("Content-Type", "application/json");
+      headers.set(
+        "Authorization",
+        `Bearer ${localStorage.getItem("accessToken")}`
+      );
       return headers;
     },
   }),
@@ -39,6 +43,16 @@ const authApiSlice = createApi({
           password: password,
         },
       }),
+    }),
+    // getAuthInfo: builder.mutation({
+    //   query: () => ({
+    //     url: "/info",
+    //     method: "get",
+    //   }),
+    // }),
+
+    getAuthInfo: builder.query({
+      query: () => "/info",
     }),
   }),
 });
