@@ -15,11 +15,13 @@ export const BackButton = () => {
   );
 };
 
-export const ButtonPrimary = ({ children, ...props }) => {
+export const ButtonPrimary = ({ children, width = "full", ...props }) => {
   return (
     <button
       {...props}
-      className="bg-primary w-full px-8 py-2 duration-200  text-white rounded-lg active:scale-[0.98]"
+      className={`bg-primary w-full ${width === "auto" && "w-auto"} ${
+        width === "full" && "w-full"
+      } px-8 py-2 duration-200  text-white  rounded-lg active:scale-[0.98]`}
     >
       {children}
     </button>

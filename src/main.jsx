@@ -5,13 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import { RootContext } from "./contexts/RootContext.jsx";
 import ReduxProvider from "./redux/app/ReduxProvider.jsx";
 import { AuthContext } from "./contexts/AuthContext.jsx";
+import { ModalContext } from "./contexts/ModalContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <ReduxProvider>
       <RootContext>
         <AuthContext>
-          <App />
+          <ModalContext>
+            <App />
+          </ModalContext>
         </AuthContext>
       </RootContext>
     </ReduxProvider>

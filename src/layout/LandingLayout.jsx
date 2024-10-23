@@ -1,6 +1,5 @@
 import React from "react";
 import { Header } from "../components/header/Header";
-import HeroArea from "../pages/home/components/HeroArea";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/footer/Footer";
 

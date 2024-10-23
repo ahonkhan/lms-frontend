@@ -23,6 +23,7 @@ import { Toaster } from "react-hot-toast";
 import AuthLessWrapper from "./layout/AuthLessWrapper";
 import AuthWrapper from "./layout/AuthWrapper";
 import { GetAuthContext } from "./contexts/AuthContext";
+import ModalWrapper from "./layout/ModalWrapper";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -30,9 +31,11 @@ function App() {
   if (authContext.isLoading) {
     return <>loading...</>;
   }
+
   return (
     <>
       <Toaster />
+      <ModalWrapper />
       <div
         className={`course-modules ${
           rootContext?.moduleOpen ? "translate-y-0" : "translate-y-full"
