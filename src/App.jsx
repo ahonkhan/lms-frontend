@@ -24,6 +24,7 @@ import AuthLessWrapper from "./layout/AuthLessWrapper";
 import AuthWrapper from "./layout/AuthWrapper";
 import { GetAuthContext } from "./contexts/AuthContext";
 import ModalWrapper from "./layout/ModalWrapper";
+import AdminLayout from "./layout/AdminLayout";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -94,7 +95,14 @@ function App() {
           <Route index element={<DashboardHome />} />
           <Route path="/dashboard/courses" element={<DashboardCourses />} />
           <Route path="/dashboard/settings" element={<Settings />} />
-          <Route path="/dashboard/category" element={<CategoryPage />} />
+          <Route
+            path="/dashboard/category"
+            element={
+              <AdminLayout>
+                <CategoryPage />
+              </AdminLayout>
+            }
+          />
           <Route path="/dashboard/users" element={<>users</>} />
           <Route path="/dashboard/transactions" element={<MyOrdersPage />} />
           <Route
