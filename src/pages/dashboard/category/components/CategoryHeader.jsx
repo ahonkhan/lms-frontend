@@ -11,12 +11,14 @@ const CategoryHeader = () => {
   return (
     <div className="flex items-center justify-between">
       <SectionTitleDashboard>All categories</SectionTitleDashboard>
-      <ButtonPrimary
-        onClick={() => modalContext.setCreateCategoryModal(true)}
-        width={"auto"}
-      >
-        Add new category
-      </ButtonPrimary>
+      <div className="">
+        <ButtonPrimary
+          onClick={() => modalContext.setCreateCategoryModal(true)}
+          width={"auto"}
+        >
+          Add new category
+        </ButtonPrimary>
+      </div>
     </div>
   );
 };

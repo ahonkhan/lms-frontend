@@ -1,11 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalCenter from "../ModalCenter";
 import { GetModalContext } from "../../../contexts/ModalContext";
 import { InputFieldWithLabel } from "../../input-field/InputField";
 import { ButtonPrimary } from "../../button/Button";
+import toast from "react-hot-toast";
+import categoryApiSlice from "../../../redux/api/categoryApiSlice";
+import { useDispatch } from "react-redux";
+import { addCategory } from "../../../redux/slice/categorySlice";
+import { ButtonLoader } from "../../loader/Loader";
 
 const AddNewCategoryModal = () => {
   const modalContext = useContext(GetModalContext);
+  const [name, setName] = useState("");
+  const [createCategory, { data, isLoading, isSuccess, isError, error }] =
+    categoryApiSlice.useCreateCategoryMutation();
+  const dispatch = useDispatch();
+  const handleSubmit = () => {
+    if (!name) {
+      return toast.error("Category name required!");
+    }
+    createCategory(name);
+  };
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      setName("");
+      dispatch(addCategory(data.category));
+      modalContext.setCreateCategoryModal(false);
+    }
+
+    if (isError) {
+      if (error?.data?.message) {
+        toast.error(error?.data?.message);
+      }
+    }
+  }, [isSuccess, isError]);
   return (
     <ModalCenter
       modalStatus={modalContext.categoryCreateModal}
@@ -19,9 +48,13 @@ const AddNewCategoryModal = () => {
           type="text"
           label={"Category name"}
           placeholder="Web & app development"
+          onChange={(e) => setName(e.target.value)}
         />
 
-        <ButtonPrimary>Create</ButtonPrimary>
+        <div className="relative">
+          <ButtonPrimary onClick={handleSubmit}>Create</ButtonPrimary>
+          {isLoading && <ButtonLoader />}
+        </div>
       </div>
     </ModalCenter>
   );
