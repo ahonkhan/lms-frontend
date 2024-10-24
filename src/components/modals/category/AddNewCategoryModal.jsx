@@ -24,9 +24,9 @@ const AddNewCategoryModal = () => {
 
   useEffect(() => {
     if (isSuccess && data) {
-      setName("");
       dispatch(addCategory(data.category));
       modalContext.setCreateCategoryModal(false);
+      setName("");
     }
 
     if (isError) {
@@ -49,6 +49,7 @@ const AddNewCategoryModal = () => {
           label={"Category name"}
           placeholder="Web & app development"
           onChange={(e) => setName(e.target.value)}
+          value={name}
         />
 
         <div className="relative">
