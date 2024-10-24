@@ -13,6 +13,7 @@ export const AuthContext = ({ children }) => {
     isLoading: isAuthLoading,
     isSuccess: isAuthSuccess,
     isError: isAuthError,
+    error,
   } = authApiSlice.useGetAuthInfoQuery();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export const AuthContext = ({ children }) => {
     }
     if (isAuthError) {
       setIsLoading(false);
+      console.log(error);
     }
   }, [isAuthSuccess, isAuthError]);
 
