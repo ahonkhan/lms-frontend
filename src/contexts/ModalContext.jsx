@@ -5,6 +5,8 @@ export const GetModalContext = createContext();
 export const ModalContext = ({ children }) => {
   const [categoryCreateModal, setCreateCategoryModal] = useState(false);
   const [categoryUpdateModal, setUpdateCategoryModal] = useState(false);
+  const [courseCreateModal, setCreateCourseModal] = useState(false);
+  const [courseUpdateModal, setUpdateCourseModal] = useState(false);
 
   return (
     <GetModalContext.Provider
@@ -13,6 +15,8 @@ export const ModalContext = ({ children }) => {
         setCreateCategoryModal,
         categoryUpdateModal,
         setUpdateCategoryModal,
+        courseCreateModal,
+        setCreateCourseModal,
       }}
     >
       {children}
