@@ -44,7 +44,7 @@ export const RecentCourseCard = ({ item }) => {
     <div className="course-item cursor-pointer bg-base-3 shadow-lg rounded-md">
       <div className="relative group">
         <img
-          src={`${STORAGE_BASE_URL}/${item?.previewImage}`}
+          src={`${item?.previewImage}`}
           alt=""
           className="rounded-md"
         />
