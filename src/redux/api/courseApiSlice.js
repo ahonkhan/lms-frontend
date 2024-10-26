@@ -34,6 +34,12 @@ const courseApiSlice = createApi({
         }
       },
     }),
+    deleteCourse: builder.mutation({
+      query: (id) => ({
+        url: "/admin/course/" + id,
+        method: "delete",
+      }),
+    }),
   }),
 });
 

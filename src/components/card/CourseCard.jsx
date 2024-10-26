@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GrFormNextLink } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { STORAGE_BASE_URL } from "../../config/config";
 import { ButtonPrimary } from "../button/Button";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
+import courseApiSlice from "../../redux/api/courseApiSlice";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { deleteCourse } from "../../redux/slice/courseSlice";
 
 export const CourseCard = () => {
   return (
@@ -40,6 +44,25 @@ export const CourseCard = () => {
 };
 
 export const RecentCourseCard = ({ item }) => {
+  const [removeCourse, { data, isLoading, isSuccess, isError, error }] =
+    courseApiSlice.useDeleteCourseMutation();
+  const dispatch = useDispatch();
+  const handleRemoveCourse = (id) => {
+    removeCourse(id);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(data.message);
+      dispatch(deleteCourse(data?.id));
+    }
+    if (isError) {
+      if (error?.data?.message) {
+        toast.error(error?.data?.message);
+      }
+    }
+  }, [isSuccess, isError]);
+
   return (
     <div className="course-item cursor-pointer bg-base-3 shadow-lg rounded-md">
       <div className="relative group">
@@ -47,7 +70,10 @@ export const RecentCourseCard = ({ item }) => {
         <div className="absolute opacity-0   group-hover:opacity-100 duration-100  w-full h-full z-[50] bg-black top-0 left-0 rounded-md bg-opacity-80">
           <div className="h-full p-4 w-fit">
             <div className="flex flex-col gap-4 items-center justify-center">
-              <button className="text-white bg-base-3 w-8 h-8 text-lg rounded-full flex items-center justify-center">
+              <button
+                onClick={() => handleRemoveCourse(item?.id)}
+                className="text-white bg-base-3 w-8 h-8 text-lg rounded-full flex items-center justify-center"
+              >
                 <AiOutlineDelete />
               </button>
               <button className="text-white bg-base-3 w-8 h-8 text-lg rounded-full flex items-center justify-center">
@@ -64,11 +90,11 @@ export const RecentCourseCard = ({ item }) => {
         </h2>
         <div className="flex items-center mt-4 gap-x-4">
           <div className="module">
-            <p>{item?.courseModules?.length} modules</p>
+            <p>{item?.courseModules?.length || "0"} modules</p>
           </div>
           <div className="added_by">
             <p className="bg-primary px-2 py-1 text-xs text-white rounded-full">
-              {item?.addedBy?.fullName}
+              {item?.addedBy?.fullName || "You"}
             </p>
           </div>
         </div>

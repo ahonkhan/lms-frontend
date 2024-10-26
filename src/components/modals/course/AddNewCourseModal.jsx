@@ -60,7 +60,7 @@ const AddNewCourseModal = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(addCourse(data.course));
-      toast("Course added successfully");
+      toast.success("Course added successfully");
       setName("");
       setDescription("");
       setCategory("");
