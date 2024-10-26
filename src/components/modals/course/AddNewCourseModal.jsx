@@ -13,6 +13,7 @@ import categoryApiSlice from "../../../redux/api/categoryApiSlice";
 import courseApiSlice from "../../../redux/api/courseApiSlice";
 import toast from "react-hot-toast";
 import { addCourse } from "../../../redux/slice/courseSlice";
+import { ButtonLoader } from "../../loader/Loader";
 const AddNewCourseModal = () => {
   const {} = categoryApiSlice.useFetchAllCategoryQuery();
   const modalContext = useContext(GetModalContext);
@@ -143,10 +144,11 @@ const AddNewCourseModal = () => {
           />
         </div>
 
-        <div className="">
+        <div className="relative">
           <ButtonPrimary onClick={handleCreateCourse}>
             Create course
           </ButtonPrimary>
+          {isLoading && <ButtonLoader />}
         </div>
       </div>
     </ModalCenter>
