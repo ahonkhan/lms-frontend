@@ -25,12 +25,13 @@ import AuthWrapper from "./layout/AuthWrapper";
 import { GetAuthContext } from "./contexts/AuthContext";
 import ModalWrapper from "./layout/ModalWrapper";
 import AdminLayout from "./layout/AdminLayout";
+import { LoaderPageFull } from "./components/loader/Loader";
 
 function App() {
   const rootContext = useContext(GetRootContext);
   const authContext = useContext(GetAuthContext);
   if (authContext.isLoading) {
-    return <>loading...</>;
+    return <LoaderPageFull />;
   }
 
   return (

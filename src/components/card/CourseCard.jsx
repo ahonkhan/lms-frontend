@@ -100,7 +100,7 @@ export const RecentCourseCard = ({ item }) => {
         </div>
 
         <Link
-          to={"/dashboard/courses/frontend-web-development-react"}
+          to={"/dashboard/courses/" + item?._id}
           className="item-footer mt-4 block"
         >
           <button className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 w-full rounded-lg font-medium text-white text-center flex items-center justify-center py-2">

@@ -25,6 +25,7 @@ const AddNewCategoryModal = () => {
   useEffect(() => {
     if (isSuccess && data) {
       dispatch(addCategory(data.category));
+      toast.success("Category added successfully.");
       modalContext.setCreateCategoryModal(false);
       setName("");
     }

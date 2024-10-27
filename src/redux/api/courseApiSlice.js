@@ -24,7 +24,7 @@ const courseApiSlice = createApi({
       }),
     }),
     fetchAllCourse: builder.query({
-      query: () => "/admin/course",
+      query: () => "/public/course",
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
@@ -39,6 +39,9 @@ const courseApiSlice = createApi({
         url: "/admin/course/" + id,
         method: "delete",
       }),
+    }),
+    fetchSingleCourse: builder.query({
+      query: (id) => "/public/course/" + id,
     }),
   }),
 });
