@@ -2,7 +2,8 @@ import React from "react";
 import { LiaEditSolid } from "react-icons/lia";
 import { MdDeleteOutline, MdPlayCircleOutline } from "react-icons/md";
 
-export const LessonCard = () => {
+export const LessonCard = ({ item, serial }) => {
+  console.log(item);
   return (
     <div className="video-item bg-base-3 select-none py-8 px-4 rounded-lg cursor-pointer flex justify-between items-center gap-x-4">
       <div className="">
@@ -12,7 +13,7 @@ export const LessonCard = () => {
           </div>
           <div className="">
             <p className="text-gray-1 text-sm">
-              1) JavaScript Object & JSON, Arrays and Array Methods, Strings and
+              {`${serial})`} {item?.name}
             </p>
           </div>
         </div>

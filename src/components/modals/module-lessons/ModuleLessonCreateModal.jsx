@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import moduleLessonApiSlice from "../../../redux/api/moduleLessonApiSlice";
 import { useDispatch } from "react-redux";
 import { addCourseLessons } from "../../../redux/slice/courseSlice";
+import { ButtonLoader } from "../../loader/Loader";
 
 const ModuleLessonCreateModal = () => {
   const modalContext = useContext(GetModalContext);
@@ -36,9 +37,12 @@ const ModuleLessonCreateModal = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(addCourseLessons(data.lesson));
+      toast.success("Lesson added successfully!");
+      setDescription("");
+      setVideo("");
+      modalContext.setCreateModuleLessonModal(false);
     }
     if (isError) {
-      console.log(error);
       if (error?.data?.errors) {
         toast.error(error.data.errors[0].msg);
       } else {
@@ -81,7 +85,7 @@ const ModuleLessonCreateModal = () => {
           <ButtonPrimary onClick={() => handleCreateModule()}>
             Create
           </ButtonPrimary>
-          {/* {isLoading && <ButtonLoader />} */}
+          {isLoading && <ButtonLoader />}
         </div>
       </div>
     </ModalCenter>

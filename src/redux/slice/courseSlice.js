@@ -11,7 +11,7 @@ const courseSlice = createSlice({
       state.courses = [action.payload, ...state.courses];
     },
     addCourseLessons: (state, action) => {
-      state.lessons = [action.payload, ...state.lessons];
+      state.lessons.push(action.payload);
     },
     addInitialCourse: (state, action) => {
       state.courses = action.payload;

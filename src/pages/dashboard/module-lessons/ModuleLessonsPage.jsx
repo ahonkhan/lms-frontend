@@ -12,14 +12,14 @@ const ModuleLessonsPage = () => {
   const modalContext = useContext(GetModalContext);
   const params = useParams();
   const course = useSelector((state) => state.course);
-  const { isLoading, data } =
+  const { isLoading } =
     moduleLessonApiSlice.useFetchAllCourseModulesLessonsQuery(params.module);
 
   if (isLoading) {
     return <LoaderPage />;
   }
 
-  console.log(course.lessons);
+  // console.log(course.lessons);
   return (
     <>
       <div className="flex justify-between items-center">
@@ -40,7 +40,9 @@ const ModuleLessonsPage = () => {
       </div>
       <div className="module-lessons mt-content">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
-          <LessonCard />
+          {course.lessons.map((item, index) => (
+            <LessonCard key={item?._id} item={item} serial={index + 1} />
+          ))}
         </div>
       </div>
     </>
