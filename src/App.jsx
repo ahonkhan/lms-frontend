@@ -26,6 +26,7 @@ import { GetAuthContext } from "./contexts/AuthContext";
 import ModalWrapper from "./layout/ModalWrapper";
 import AdminLayout from "./layout/AdminLayout";
 import { LoaderPageFull } from "./components/loader/Loader";
+import ModuleLessonsPage from "./pages/dashboard/module-lessons/ModuleLessonsPage";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -102,6 +103,14 @@ function App() {
               <AdminLayout>
                 <CategoryPage />
               </AdminLayout>
+            }
+          />
+          <Route
+            path="/dashboard/courses/:course/:module"
+            element={
+              // <AdminLayout>
+              <ModuleLessonsPage />
+              // </AdminLayout>
             }
           />
           <Route path="/dashboard/users" element={<>users</>} />

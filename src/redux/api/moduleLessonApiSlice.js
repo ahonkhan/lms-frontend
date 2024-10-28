@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_BASE_URL } from "../../config/config";
 import { addInitialModules } from "../slice/courseModuleSlice";
+import { addInitialCourseLesson } from "../slice/courseSlice";
 
-const courseModuleApiSlice = createApi({
-  reducerPath: "api/courseModule",
+const moduleLessonApiSlice = createApi({
+  reducerPath: "api/courseModuleLesson",
   baseQuery: fetchBaseQuery({
     baseUrl: `${API_BASE_URL}`,
     prepareHeaders: (headers) => {
@@ -17,26 +18,25 @@ const courseModuleApiSlice = createApi({
   }),
 
   endpoints: (builder) => ({
-    createCourseModule: builder.mutation({
-      query: ({ name, description, course, startDate, endDate }) => ({
-        url: "/admin/course-module",
+    createCourseModuleLesson: builder.mutation({
+      query: ({ name, description, module, video }) => ({
+        url: "/admin/module-lesson",
         method: "post",
         body: {
           name: name,
           description: description,
-          course: course,
-          startDate: startDate,
-          endDate: endDate,
+          module: module,
+          video: video,
         },
       }),
     }),
-    fetchAllCourseModules: builder.query({
-      query: (course) => "/public/course-module?course=" + course,
+    fetchAllCourseModulesLessons: builder.query({
+      query: (module) => "/user/module-lesson?module=" + module,
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          dispatch(addInitialModules([]));
+          dispatch(addInitialCourseLesson([]));
           const { data } = await queryFulfilled;
-          dispatch(addInitialModules(data.modules));
+          dispatch(addInitialCourseLesson(data.moduleLessons));
         } catch (error) {
           console.log(error.message);
         }
@@ -46,4 +46,4 @@ const courseModuleApiSlice = createApi({
   }),
 });
 
-export default courseModuleApiSlice;
+export default moduleLessonApiSlice;

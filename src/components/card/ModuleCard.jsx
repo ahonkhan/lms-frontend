@@ -49,7 +49,13 @@ const ModuleCard = ({ item, serial }) => {
           <p>1 Assignment</p>
         </div>
       </div>
-      <div className="module-card-action mt-4">
+      <div className="module-card-action flex flex-col gap-4">
+        <Link
+          to={`/dashboard/courses/${item?.course}/${item?._id}`}
+          className="bg-base-3  active:scale-[0.98] duration-150 mt-4 group gap-x-2 px-16 w-full rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
+        >
+          Go to lessons
+        </Link>
         <Link
           to={"/dashboard/courses/frontend-web-dev-batch-5/classroom/vm1lL2"}
           className="bg-primary  active:scale-[0.98] duration-150 group gap-x-2 px-16 w-full rounded-lg font-medium text-white text-center flex items-center justify-center py-2"

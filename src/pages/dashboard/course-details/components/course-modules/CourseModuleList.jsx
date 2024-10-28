@@ -21,7 +21,6 @@ const CourseModuleList = () => {
   if (isLoading) {
     return <>Loading course modules</>;
   }
-  console.log(courseModule.modules);
   return (
     <div className="mt-content">
       <div className="flex items-center justify-between">

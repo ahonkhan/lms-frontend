@@ -4,13 +4,20 @@ const courseSlice = createSlice({
   name: "course",
   initialState: {
     courses: [],
+    lessons: [],
   },
   reducers: {
     addCourse: (state, action) => {
       state.courses = [action.payload, ...state.courses];
     },
+    addCourseLessons: (state, action) => {
+      state.lessons = [action.payload, ...state.lessons];
+    },
     addInitialCourse: (state, action) => {
       state.courses = action.payload;
+    },
+    addInitialCourseLesson: (state, action) => {
+      state.lessons = action.payload;
     },
     deleteCourse: (state, action) => {
       state.courses = state.courses.filter(
@@ -20,6 +27,11 @@ const courseSlice = createSlice({
   },
 });
 
-export const { addCourse, addInitialCourse, deleteCourse } =
-  courseSlice.actions;
+export const {
+  addCourse,
+  addInitialCourse,
+  deleteCourse,
+  addCourseLessons,
+  addInitialCourseLesson,
+} = courseSlice.actions;
 export default courseSlice.reducer;
