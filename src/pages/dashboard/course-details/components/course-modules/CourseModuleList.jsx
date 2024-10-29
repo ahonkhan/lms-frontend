@@ -15,12 +15,14 @@ const CourseModuleList = () => {
   const courseID = params.slug;
   const modalContext = useContext(GetModalContext);
   const authContext = useContext(GetAuthContext);
-  const { isLoading } =
+  const { isLoading, data } =
     courseModuleApiSlice.useFetchAllCourseModulesQuery(courseID);
   const courseModule = useSelector((state) => state.courseModule);
   if (isLoading) {
     return <>Loading course modules</>;
   }
+
+
   return (
     <div className="mt-content">
       <div className="flex items-center justify-between">
@@ -41,7 +43,12 @@ const CourseModuleList = () => {
       <div className="mt-content">
         <div className="module-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5">
           {courseModule.modules.map((item, index) => (
-            <ModuleCard key={item?._id} item={item} serial={index + 1} />
+            <ModuleCard
+              enrolled={data?.enrolled}
+              key={item?._id}
+              item={item}
+              serial={index + 1}
+            />
           ))}
         </div>
       </div>

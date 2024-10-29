@@ -43,6 +43,11 @@ const moduleLessonApiSlice = createApi({
       },
       keepUnusedDataFor: 0,
     }),
+
+    getSingleModuleLesson: builder.query({
+      query: (lesson) => "/user/module-lesson/" + lesson,
+      keepUnusedDataFor: 0,
+    }),
   }),
 });
 

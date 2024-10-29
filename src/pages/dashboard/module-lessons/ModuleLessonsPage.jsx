@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { BackButton, ButtonPrimary } from "../../../components/button/Button";
-import { MdPlayCircleOutline } from "react-icons/md";
 import { LessonCard } from "../../../components/card/LessonCard";
 import { GetModalContext } from "../../../contexts/ModalContext";
 import { useParams } from "react-router-dom";
@@ -19,7 +18,6 @@ const ModuleLessonsPage = () => {
     return <LoaderPage />;
   }
 
-  // console.log(course.lessons);
   return (
     <>
       <div className="flex justify-between items-center">

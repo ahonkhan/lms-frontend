@@ -31,7 +31,7 @@ const courseModuleApiSlice = createApi({
       }),
     }),
     fetchAllCourseModules: builder.query({
-      query: (course) => "/public/course-module?course=" + course,
+      query: (course) => "/user/course-module?course=" + course,
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           dispatch(addInitialModules([]));
@@ -41,6 +41,10 @@ const courseModuleApiSlice = createApi({
           console.log(error.message);
         }
       },
+      keepUnusedDataFor: 0,
+    }),
+    fetchCourseModulesWithLessons: builder.query({
+      query: (course) => "/user/course/" + course,
       keepUnusedDataFor: 0,
     }),
   }),
