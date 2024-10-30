@@ -43,6 +43,17 @@ const courseApiSlice = createApi({
     fetchSingleCourse: builder.query({
       query: (id) => "/public/course/" + id,
     }),
+
+    getAllCategoryWithCourse: builder.query({
+      query: () => "/public/category",
+    }),
+    fetchAllCourseByCategory: builder.query({
+      query: (category) =>
+        category === "all"
+          ? "/public/course"
+          : "/public/course-by-category/" + category,
+      keepUnusedDataFor: 0,
+    }),
   }),
 });
 

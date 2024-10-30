@@ -40,7 +40,6 @@ const categoryApiSlice = createApi({
         }
       },
     }),
-  
   }),
 });
 

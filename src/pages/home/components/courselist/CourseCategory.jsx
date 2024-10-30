@@ -6,9 +6,22 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import courseApiSlice from "../../../../redux/api/courseApiSlice";
 
-export const CourseCategory = () => {
+export const CourseCategory = ({ setActiveCategory, activeCategory }) => {
   const swiperRef = useRef();
+  const { data, isLoading } = courseApiSlice.useGetAllCategoryWithCourseQuery();
+
+  if (isLoading) {
+    return <>Loading..</>;
+  }
+  const allCourseCount = (category) => {
+    let count = 0;
+    category.map((item) => {
+      count += item.courses.length;
+    });
+    return count;
+  };
   return (
     <div className="course-category mt-section">
       <div className="flex items-center gap-4 relative">
@@ -32,35 +45,57 @@ export const CourseCategory = () => {
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
           }}
-          slidesPerView={2}
+          slidesPerView={"auto"}
           spaceBetween={10}
           modules={[Navigation]}
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: Math.min(data?.categories.length + 1, 2),
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: Math.min(data?.categories.length + 1, 4),
               spaceBetween: 20,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: Math.min(data?.categories.length + 1, 4),
               spaceBetween: 20,
             },
             1920: {
-              slidesPerView: 5,
+              slidesPerView: Math.min(data?.categories.length + 1, 4),
               spaceBetween: 20,
             },
           }}
         >
-          {[...Array(8)].map((item) => (
-            <SwiperSlide>
-              <div className="category-item text-center rounded-md bg-base-2 transition-all duration-300 hover:bg-base-3 select-none cursor-pointer py-4 px-4">
-                <p>Web development</p>
-                <p className="text-sm text-primary">12 Courses</p>
-              </div>
-            </SwiperSlide>
+          <SwiperSlide>
+            <div
+              onClick={() => setActiveCategory("all")}
+              className={`category-item ${
+                activeCategory === "all" ? "bg-base-3" : "bg-base-2"
+              } text-center rounded-md  transition-all duration-300 hover:bg-base-3 select-none cursor-pointer py-4 px-4`}
+            >
+              <p className="capitalize">All</p>
+              <p className="text-sm text-primary">
+                {allCourseCount(data.categories)} Courses
+              </p>
+            </div>
+          </SwiperSlide>
+          {data?.categories.map((item) => (
+            <>
+              <SwiperSlide key={item?._id}>
+                <div
+                  onClick={() => setActiveCategory(item?._id)}
+                  className={`category-item text-center rounded-md ${
+                    activeCategory === item?._id ? "bg-base-3" : "bg-base-2"
+                  } transition-all duration-300 hover:bg-base-3 select-none cursor-pointer py-4 px-4`}
+                >
+                  <p className="capitalize">{item?.name}</p>
+                  <p className="text-sm text-primary">
+                    {item?.courses.length || 0} Courses
+                  </p>
+                </div>
+              </SwiperSlide>
+            </>
           ))}
         </Swiper>
       </div>

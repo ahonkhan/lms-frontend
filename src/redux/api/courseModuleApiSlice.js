@@ -47,6 +47,7 @@ const courseModuleApiSlice = createApi({
       query: (course) => "/user/course/" + course,
       keepUnusedDataFor: 0,
     }),
+    
   }),
 });
 
