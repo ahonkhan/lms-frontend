@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import MyCourses from "./components/MyCourses";
 import RecomendedCourses from "./components/RecomendedCourses";
-import { CoursesList } from "./components/courselist/CoursesList";
 import courseApiSlice from "../../../redux/api/courseApiSlice";
 import { GetAuthContext } from "../../../contexts/AuthContext";
 import { LoaderPage } from "../../../components/loader/Loader";
@@ -15,12 +14,13 @@ const DashboardCourses = () => {
   }
   return (
     <>
-      <MyCourses />
-      {authContext.user.role === "customer" && (
+      {authContext.user.role === "customer" ? (
         <>
-          <RecomendedCourses />
-          <CoursesList />
+          <MyCourses />
+          {/* <RecomendedCourses /> */}
         </>
+      ) : (
+        <MyCourses />
       )}
       <div className="mt-content"></div>
     </>
