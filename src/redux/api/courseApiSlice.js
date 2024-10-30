@@ -54,6 +54,9 @@ const courseApiSlice = createApi({
           : "/public/course-by-category/" + category,
       keepUnusedDataFor: 0,
     }),
+    getCourseDetails: builder.query({
+      query: (course) => "/public/course/" + course,
+    }),
   }),
 });
 
