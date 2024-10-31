@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { LiaEditSolid } from "react-icons/lia";
 import { MdDeleteOutline, MdPlayCircleOutline } from "react-icons/md";
+import { GetAuthContext } from "../../contexts/AuthContext";
 
 export const LessonCard = ({ item, serial }) => {
-  console.log(item);
+  const authContext = useContext(GetAuthContext);
   return (
     <div className="video-item bg-base-3 select-none py-8 px-4 rounded-lg cursor-pointer flex justify-between items-center gap-x-4">
       <div className="">
@@ -22,14 +23,16 @@ export const LessonCard = ({ item, serial }) => {
         </div> */}
       </div>
 
-      <div className="flex text-xl items-center gap-x-4 shrink-0">
-        <button className="active:scale-95 duration-150">
-          <LiaEditSolid />
-        </button>
-        <div className="text-primary active:scale-95 duration-150  ">
-          <MdDeleteOutline />
+      {authContext?.user?.role !== "customer" && (
+        <div className="flex text-xl items-center gap-x-4 shrink-0">
+          <button className="active:scale-95 duration-150">
+            <LiaEditSolid />
+          </button>
+          <div className="text-primary active:scale-95 duration-150  ">
+            <MdDeleteOutline />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -107,3 +107,37 @@ export const RecentCourseCard = ({ item }) => {
     </div>
   );
 };
+
+export const EnrolledCourseCard = ({ item}) => {
+  return (
+    <div className="course-item cursor-pointer bg-base-3 shadow-lg rounded-md">
+      <div className="relative group">
+        <img src={`${item?.previewImage}`} alt="" className="rounded-md" />
+      </div>
+
+      <div className="course-desc px-4 py-4">
+        <h2 className="text-xl text-white tracking-tight leading-6">
+          {item?.name}
+        </h2>
+        <div className="flex items-center mt-4 gap-x-4">
+          <div className="module">
+            <p>{item?.courseModules?.length || "0"} modules</p>
+          </div>
+         
+        </div>
+
+        <Link
+          to={"/dashboard/courses/" + item?._id}
+          className="item-footer mt-4 block"
+        >
+          <button className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 w-full rounded-lg font-medium text-white text-center flex items-center justify-center py-2">
+            Details
+            <span className="text-xl group-hover:translate-x-1 duration-300">
+              <GrFormNextLink />
+            </span>
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
+};

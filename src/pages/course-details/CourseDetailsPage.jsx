@@ -15,7 +15,6 @@ export const CourseDetailsPage = () => {
   useEffect(() => {
     loadData(params.slug);
   }, [params.slug]);
-  console.log(data);
   if (isLoading) {
     return <LoaderPage />;
   }

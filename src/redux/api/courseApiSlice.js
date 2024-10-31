@@ -57,6 +57,9 @@ const courseApiSlice = createApi({
     getCourseDetails: builder.query({
       query: (course) => "/public/course/" + course,
     }),
+    getMyCourses: builder.query({
+      query: () => "/user/my-courses",
+    }),
   }),
 });
 

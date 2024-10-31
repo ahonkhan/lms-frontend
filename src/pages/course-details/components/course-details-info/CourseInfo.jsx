@@ -2,48 +2,42 @@ import React, { useContext } from "react";
 import { GrFormNextLink } from "react-icons/gr";
 import { GetAuthContext } from "../../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
-
-export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
+import EnrollCourse from "./EnrollCourse";
+const GetButton = ({ course, enrolled }) => {
   const authContext = useContext(GetAuthContext);
-
-  const GetButton = () => {
-    if (authContext.user?.role !== "customer") {
+  if (authContext.user && authContext.user?.role !== "customer") {
+    return (
+      <Link
+        to={"/dashboard/courses/" + course?._id}
+        className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-16 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
+      >
+        Manage
+        <span className="text-xl group-hover:translate-x-1 duration-300">
+          <GrFormNextLink />
+        </span>
+      </Link>
+    );
+  } else {
+    if (authContext.user && enrolled) {
       return (
         <Link
           to={"/dashboard/courses/" + course?._id}
           className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-16 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
         >
-          Manage
+          Go to module
           <span className="text-xl group-hover:translate-x-1 duration-300">
             <GrFormNextLink />
           </span>
         </Link>
       );
     } else {
-      if (enrolled) {
-        return (
-          <Link
-            to={"/dashboard/courses/" + course?._id}
-            className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-16 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
-          >
-            Go to module
-            <span className="text-xl group-hover:translate-x-1 duration-300">
-              <GrFormNextLink />
-            </span>
-          </Link>
-        );
-      } else {
-        return (
-          <button className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-16 rounded-lg font-medium text-white text-center flex items-center justify-center py-2">
-            Enroll now
-            <span className="text-xl group-hover:translate-x-1 duration-300">
-              <GrFormNextLink />
-            </span>
-          </button>
-        );
-      }
+      return <EnrollCourse />;
     }
-  };
+  }
+};
+export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
+  const authContext = useContext(GetAuthContext);
+
   return (
     <div className="bg-base-2">
       <div className="site-container py-section">
@@ -56,7 +50,7 @@ export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
             ></p>
 
             <div className="purchase mt-8 flex items-center gap-x-4">
-              <GetButton />
+              <GetButton course={course} enrolled={enrolled} />
               <p className="text-lg">৳ {course?.price}</p>
             </div>
             <div className="more-info text-sm md:text-base mt-8 flex items-center gap-4">

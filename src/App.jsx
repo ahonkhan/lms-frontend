@@ -27,6 +27,7 @@ import ModalWrapper from "./layout/ModalWrapper";
 import AdminLayout from "./layout/AdminLayout";
 import { LoaderPageFull } from "./components/loader/Loader";
 import ModuleLessonsPage from "./pages/dashboard/module-lessons/ModuleLessonsPage";
+import EnrollProcessPage from "./pages/enroll/enroll-process/EnrollProcessPage";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -84,6 +85,16 @@ function App() {
             }
           />
           <Route path="/courses" element={<CoursePage />} />
+
+          <Route
+            path="/enroll/process"
+            element={
+              <AuthWrapper>
+                <EnrollProcessPage />
+              </AuthWrapper>
+            }
+          />
+          <Route path="/enroll/cancel" element={<>cancel page</>} />
           <Route path="/courses/:slug" element={<CourseDetailsPage />} />
         </Route>
         <Route

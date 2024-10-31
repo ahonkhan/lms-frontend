@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import MyCourses from "./components/MyCourses";
-import RecomendedCourses from "./components/RecomendedCourses";
+// import RecomendedCourses from "./components/RecomendedCourses";
 import courseApiSlice from "../../../redux/api/courseApiSlice";
 import { GetAuthContext } from "../../../contexts/AuthContext";
 import { LoaderPage } from "../../../components/loader/Loader";
+import EnrolledCourses from "./components/EnrolledCourses";
 
 const DashboardCourses = () => {
   const { isLoading } = courseApiSlice.useFetchAllCourseQuery();
@@ -16,7 +17,7 @@ const DashboardCourses = () => {
     <>
       {authContext.user.role === "customer" ? (
         <>
-          <MyCourses />
+          <EnrolledCourses />
           {/* <RecomendedCourses /> */}
         </>
       ) : (

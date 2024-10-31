@@ -23,7 +23,7 @@ const CategoryList = () => {
           </thead>
           <tbody>
             {category.categories.map((item) => (
-              <CategoryListItem item={item} />
+              <CategoryListItem key={item?._id} item={item} />
             ))}
           </tbody>
         </table>

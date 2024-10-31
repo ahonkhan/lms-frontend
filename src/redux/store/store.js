@@ -7,6 +7,7 @@ import courseModuleApiSlice from "../api/courseModuleApiSlice";
 import courseSlice from "../slice/courseSlice";
 import courseModuleSlice from "../slice/courseModuleSlice";
 import moduleLessonApiSlice from "../api/moduleLessonApiSlice";
+import enrollApiSlice from "../api/enrollApiSlice";
 
 const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
     [categoryApiSlice.reducerPath]: categoryApiSlice.reducer,
     [courseModuleApiSlice.reducerPath]: courseModuleApiSlice.reducer,
     [moduleLessonApiSlice.reducerPath]: moduleLessonApiSlice.reducer,
+    [enrollApiSlice.reducerPath]: enrollApiSlice.reducer,
     category: categoryReducer,
     course: courseSlice,
     courseModule: courseModuleSlice,
@@ -26,7 +28,8 @@ const store = configureStore({
       categoryApiSlice.middleware,
       courseApiSlice.middleware,
       courseModuleApiSlice.middleware,
-      moduleLessonApiSlice.middleware
+      moduleLessonApiSlice.middleware,
+      enrollApiSlice.middleware
     );
   },
 });

@@ -49,7 +49,7 @@ const LoginPage = () => {
     if (loginResponseData) {
       localStorage.setItem("accessToken", loginResponseData.access_token);
       toast.success(loginResponseData.message);
-      location.replace("/dashboard");
+      location.replace(localStorage.getItem("currentRoute") || "/dashboard");
     }
   }, [isLoginError, loginResponseData]);
   return (
