@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdPlayCircleOutline } from "react-icons/md";
 import { NavLink, useSearchParams } from "react-router-dom";
+import { GetRootContext } from "../../../../../contexts/RootContext";
 
 const ModuleItem = ({ item, serial }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const rootContext = useContext(GetRootContext);
   const [query] = useSearchParams();
   useEffect(() => {
     if (query.get("module") === item?._id) {
       setIsOpen(true);
+    } else {
+      setIsOpen(false);
     }
   }, [query.toString()]);
   return (
@@ -40,6 +44,7 @@ const ModuleItem = ({ item, serial }) => {
         <div className="">
           {item?.lessons?.map((lesson, index) => (
             <NavLink
+              onClick={() => rootContext?.setModuleOpen(false)}
               key={lesson?._id}
               to={`/dashboard/classroom?course=${lesson?.course}&lesson=${lesson?._id}&module=${item?._id}`}
               className={`module-item-video  block border-l-4 border-transparent  px-4 py-4  bg-base-2 mt-2 rounded`}

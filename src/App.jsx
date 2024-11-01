@@ -43,13 +43,6 @@ function App() {
       <Toaster />
       <GlobalSidebar />
       <ModalWrapper />
-      <div
-        className={`course-modules ${
-          rootContext?.moduleOpen ? "translate-y-0" : "translate-y-full"
-        } duration-500 xl:hidden z-[400] fixed top-0 left-0 h-full shrink-0 w-full rounded-md  bg-base-3`}
-      >
-        <ClassModuleLoader />
-      </div>
 
       <Routes>
         <Route element={<LandingLayout />}>
@@ -133,7 +126,25 @@ function App() {
             path="/dashboard/courses/:slug"
             element={<DashboardCoursesDetails />}
           />
-          <Route path="/dashboard/classroom" element={<ClassRoom />} />
+          <Route
+            path="/dashboard/classroom"
+            element={
+              <>
+                {authContext.user && (
+                  <div
+                    className={`course-modules ${
+                      rootContext?.moduleOpen
+                        ? "translate-y-0"
+                        : "translate-y-full"
+                    } duration-500 xl:hidden z-[400] fixed top-0 left-0 h-full shrink-0 w-full rounded-md  bg-base-3`}
+                  >
+                    <ClassModuleLoader />
+                  </div>
+                )}
+                <ClassRoom />
+              </>
+            }
+          />
         </Route>
       </Routes>
     </>
