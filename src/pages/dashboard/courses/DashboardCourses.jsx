@@ -7,12 +7,13 @@ import { LoaderPage } from "../../../components/loader/Loader";
 import EnrolledCourses from "./components/EnrolledCourses";
 
 const DashboardCourses = () => {
-  const { isLoading } = courseApiSlice.useGetMyCoursesQuery();
+  const { isLoading } = courseApiSlice.useFetchAllCourseForAdminQuery();
   const authContext = useContext(GetAuthContext);
 
   if (isLoading) {
     return <LoaderPage />;
   }
+
   return (
     <>
       {authContext.user.role === "customer" ? (

@@ -57,8 +57,8 @@ export const RecentCourseCard = ({ item }) => {
   }, [isSuccess, isError]);
 
   return (
-    <div className="course-item cursor-pointer bg-base-3 shadow-lg rounded-md">
-      <div className="relative group">
+    <div className="course-item flex flex-col cursor-pointer bg-base-3 shadow-lg rounded-md">
+      <div className="relative group shrink-0">
         <img src={`${item?.previewImage}`} alt="" className="rounded-md" />
         <div className="absolute opacity-0   group-hover:opacity-100 duration-100  w-full h-full z-[50] bg-black top-0 left-0 rounded-md bg-opacity-80">
           <div className="h-full p-4 w-fit">
@@ -77,18 +77,20 @@ export const RecentCourseCard = ({ item }) => {
         </div>
       </div>
 
-      <div className="course-desc px-4 py-4">
-        <h2 className="text-xl text-white tracking-tight leading-6">
-          {item?.name}
-        </h2>
-        <div className="flex items-center mt-4 gap-x-4">
-          <div className="module">
-            <p>{item?.courseModules?.length || "0"} modules</p>
-          </div>
-          <div className="added_by">
-            <p className="bg-primary px-2 py-1 text-xs text-white rounded-full">
-              {item?.addedBy?.fullName || "You"}
-            </p>
+      <div className="course-desc px-4 py-4 w-full h-full flex flex-col justify-between">
+        <div className="">
+          <h2 className="text-xl text-white tracking-tight leading-6">
+            {item?.name} Batch {item?.batch}
+          </h2>
+          <div className="flex items-center mt-4 gap-x-4">
+            <div className="module">
+              <p>{item?.courseModules?.length || "0"} modules</p>
+            </div>
+            <div className="added_by">
+              <p className="bg-primary px-2 py-1 text-xs text-white rounded-full">
+                {item?.addedBy?.fullName || "You"}
+              </p>
+            </div>
           </div>
         </div>
 

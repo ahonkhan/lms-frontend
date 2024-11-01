@@ -34,6 +34,17 @@ const courseApiSlice = createApi({
         }
       },
     }),
+    fetchAllCourseForAdmin: builder.query({
+      query: () => "/admin/course",
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(addInitialCourse(data.courses));
+        } catch (error) {
+          console.log(error.message);
+        }
+      },
+    }),
     deleteCourse: builder.mutation({
       query: (id) => ({
         url: "/admin/course/" + id,
