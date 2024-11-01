@@ -42,7 +42,9 @@ export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
       <div className="site-container py-section">
         <div className=" md:grid-cols-2 gap-y-8 flex md:grid flex-col-reverse gap-x-10 sub-container">
           <div className="left-details">
-            <h1 className="text-2xl font-medium text-white">{course?.name}</h1>
+            <h1 className="text-2xl font-medium text-white">
+              {course?.name} Batch {course?.batch}
+            </h1>
             <p
               className="mt-4"
               dangerouslySetInnerHTML={{ __html: course?.description }}
