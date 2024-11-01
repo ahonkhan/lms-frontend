@@ -87,6 +87,7 @@ const SignupPage = () => {
       }
     }
     if (signupResponseData) {
+      localStorage.setItem("accessToken", signupResponseData?.access_token);
       toast.success(signupResponseData.message);
       location.replace("/dashboard");
     }
