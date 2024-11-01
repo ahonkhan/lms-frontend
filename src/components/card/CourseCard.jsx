@@ -19,7 +19,7 @@ export const CourseCard = ({ item }) => {
             <p>{item?.courseModules?.length || 0} modules</p>
           </div>
           <h2 className="text-xl text-white tracking-tight leading-6">
-            {item?.name}
+            {item?.name} Batch {item?.batch}
           </h2>
         </div>
 
