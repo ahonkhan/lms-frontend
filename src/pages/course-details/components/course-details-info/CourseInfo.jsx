@@ -37,7 +37,6 @@ const GetButton = ({ course, enrolled }) => {
 };
 export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
   const authContext = useContext(GetAuthContext);
-
   return (
     <div className="bg-base-2">
       <div className="site-container py-section">
@@ -63,6 +62,11 @@ export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
               <p className="px-4 py-2 bg-base-3 rounded-sm text-white">
                 {moduleCount} modules
               </p>
+            </div>
+            <div className="mt-4">
+              <h1 className="bg-base-3 text-xl py-2 px-2 w-fit rounded border-b-2 border-primary">
+                Enroll before: {course?.startDate}
+              </h1>
             </div>
           </div>
           <div className="right-image">

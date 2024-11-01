@@ -34,7 +34,9 @@ const EnrollCourse = () => {
     }
 
     if (isError) {
-      toast.error("Something went wrong.");
+      // console.log(error);
+
+      toast.error(error?.data?.message);
     }
   }, [isSuccess, isError]);
   if (authContext.user) {
