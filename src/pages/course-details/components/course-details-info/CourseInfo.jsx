@@ -65,11 +65,13 @@ export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
                 {moduleCount} modules
               </p>
             </div>
-            <div className="mt-4">
-              <h1 className="bg-base-3 text-xl py-2 px-2 w-fit rounded border-b-2 border-primary">
-                Enroll before: {course?.startDate}
-              </h1>
-            </div>
+            {authContext.user.role === "customer" && !enrolled && (
+              <div className="mt-4">
+                <h1 className="bg-base-3 text-xl py-2 px-2 w-fit rounded border-b-2 border-primary">
+                  Enroll before: {course?.startDate}
+                </h1>
+              </div>
+            )}
           </div>
           <div className="right-image">
             <img src={course?.previewImage} alt="" className="rounded-xl" />
