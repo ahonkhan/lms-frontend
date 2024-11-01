@@ -61,7 +61,7 @@ html {
 }
 
 .db-container {
-  @apply px-4 lg:px-4 xl:px-5;
+  @apply px-2 sm:px-4 lg:px-4 xl:px-5;
 }
 
 .module-item-video.active {
@@ -79,4 +79,8 @@ html {
   100% {
     transform: translateY(0px);
   }
+}
+
+.global-sidebar-menu-item.active {
+  @apply border-primary;
 }

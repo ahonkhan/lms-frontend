@@ -44,7 +44,7 @@ const ClassVideo = () => {
         )}
       </div>
       <div className=" bg-base-3 bg-opacity-15 py-4 px-4">
-        <div className="classroom-tabs border-b pb-4 border-b-base-3 flex items-center justify-between gap-x-4">
+        <div className="classroom-tabs flex-wrap gap-y-4 border-b pb-4 border-b-base-3 flex items-center justify-between gap-x-4">
           <div className="flex items-center gap-x-4">
             <button className="bg-primary px-6 py-2 rounded text-white">
               Description

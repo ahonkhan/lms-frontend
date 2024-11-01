@@ -28,6 +28,8 @@ import AdminLayout from "./layout/AdminLayout";
 import { LoaderPageFull } from "./components/loader/Loader";
 import ModuleLessonsPage from "./pages/dashboard/module-lessons/ModuleLessonsPage";
 import EnrollProcessPage from "./pages/enroll/enroll-process/EnrollProcessPage";
+import GlobalSidebar from "./components/sidebar/GlobalSidebar";
+import ClassModuleLoader from "./components/dashboard/sidebar/ClassModuleLoader";
 
 function App() {
   const rootContext = useContext(GetRootContext);
@@ -39,13 +41,14 @@ function App() {
   return (
     <>
       <Toaster />
+      <GlobalSidebar />
       <ModalWrapper />
       <div
         className={`course-modules ${
           rootContext?.moduleOpen ? "translate-y-0" : "translate-y-full"
         } duration-500 xl:hidden z-[400] fixed top-0 left-0 h-full shrink-0 w-full rounded-md  bg-base-3`}
       >
-        <ClassModule />
+        <ClassModuleLoader />
       </div>
 
       <Routes>

@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
 import { BiBell, BiMenu, BiUser } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
 import { menuData } from "../../data/menuData";
 import { GrFormNextLink } from "react-icons/gr";
+import { GetRootContext } from "../../contexts/RootContext";
+import { GetAuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
+  const authContext = useContext(GetAuthContext);
   const setCurrentRoute = () => {
     localStorage.setItem("currentRoute", location.href);
   };
+  const rootContext = useContext(GetRootContext);
 
   return (
     <header
@@ -37,9 +41,16 @@ export const Header = () => {
           <Link to={"/"} className="text-xl ">
             <BiBell />
           </Link>
-          <Link to={"/login"} className="text-xl">
-            <BiUser />
-          </Link>
+          {authContext.user ? (
+            <Link to={"/dashboard/settings"} className="text-xl">
+              <BiUser />
+            </Link>
+          ) : (
+            <Link to={"/login"} className="text-xl">
+              <BiUser />
+            </Link>
+          )}
+
           <Link
             onClick={setCurrentRoute}
             to={"/dashboard"}
@@ -51,7 +62,12 @@ export const Header = () => {
             </span>
           </Link>
 
-          <button className="text-xl lg:hidden">
+          <button
+            onClick={() => {
+              rootContext.setSidebarOpen(true);
+            }}
+            className="text-xl lg:hidden"
+          >
             <BiMenu />
           </button>
         </ul>

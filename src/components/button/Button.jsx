@@ -1,6 +1,6 @@
 import React from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const BackButton = () => {
   let navigate = useNavigate();
@@ -15,15 +15,37 @@ export const BackButton = () => {
   );
 };
 
-export const ButtonPrimary = ({ children, width = "full", ...props }) => {
-  return (
-    <button
-      {...props}
-      className={`bg-primary w-full ${width === "auto" && "w-auto"} ${
-        width === "full" && "w-full"
-      } px-8 py-2 duration-200  text-white  rounded-lg active:scale-[0.98]`}
-    >
-      {children}
-    </button>
-  );
+export const ButtonPrimary = ({
+  children,
+  width = "full",
+  link = false,
+  path = "",
+  ...props
+}) => {
+  if (link) {
+    return (
+      <Link
+        to={path}
+        {...props}
+        className={`bg-primary w-full text-center block ${
+          width === "auto" && "w-auto"
+        } ${
+          width === "full" && "w-full"
+        } px-8 py-2 duration-200  text-white  rounded-lg active:scale-[0.98]`}
+      >
+        {children}
+      </Link>
+    );
+  } else {
+    return (
+      <button
+        {...props}
+        className={`bg-primary w-full ${width === "auto" && "w-auto"} ${
+          width === "full" && "w-full"
+        } px-8 py-2 duration-200  text-white  rounded-lg active:scale-[0.98]`}
+      >
+        {children}
+      </button>
+    );
+  }
 };

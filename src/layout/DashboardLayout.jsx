@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import DashboardSidebar from "../components/dashboard/sidebar/DashboardSidebar";
 import { Outlet } from "react-router-dom";
 import { DashboardHeader } from "../components/dashboard/header/DashboardHeader";
+import { GetRootContext } from "../contexts/RootContext";
 
 export const DashboardLayout = () => {
+  const rootContext = useContext(GetRootContext);
+  useEffect(() => {
+    rootContext.setDashboardSidebarOpen(false);
+  }, []);
   return (
     <>
       <DashboardSidebar />

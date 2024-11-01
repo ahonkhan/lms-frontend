@@ -23,6 +23,7 @@ const ClassModule = ({ item }) => {
       </div>
       <div className="course-module-list mt-2 h-full gap-y-2 flex flex-col overflow-y-auto">
         {item?.map((item, index) => (
+
           <ModuleItem key={item?._id} item={item} serial={index + 1} />
         ))}
       </div>

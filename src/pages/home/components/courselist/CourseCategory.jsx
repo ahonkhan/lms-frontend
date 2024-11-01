@@ -81,21 +81,19 @@ export const CourseCategory = ({ setActiveCategory, activeCategory }) => {
             </div>
           </SwiperSlide>
           {data?.categories.map((item) => (
-            <>
-              <SwiperSlide key={item?._id}>
-                <div
-                  onClick={() => setActiveCategory(item?._id)}
-                  className={`category-item text-center rounded-md ${
-                    activeCategory === item?._id ? "bg-base-3" : "bg-base-2"
-                  } transition-all duration-300 hover:bg-base-3 select-none cursor-pointer py-4 px-4`}
-                >
-                  <p className="capitalize">{item?.name}</p>
-                  <p className="text-sm text-primary">
-                    {item?.courses.length || 0} Courses
-                  </p>
-                </div>
-              </SwiperSlide>
-            </>
+            <SwiperSlide key={item?._id}>
+              <div
+                onClick={() => setActiveCategory(item?._id)}
+                className={`category-item text-center rounded-md ${
+                  activeCategory === item?._id ? "bg-base-3" : "bg-base-2"
+                } transition-all duration-300 hover:bg-base-3 select-none cursor-pointer py-4 px-4`}
+              >
+                <p className="capitalize">{item?.name}</p>
+                <p className="text-sm text-primary">
+                  {item?.courses.length || 0} Courses
+                </p>
+              </div>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>

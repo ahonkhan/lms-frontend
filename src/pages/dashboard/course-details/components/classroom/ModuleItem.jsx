@@ -6,7 +6,6 @@ import { NavLink, useSearchParams } from "react-router-dom";
 const ModuleItem = ({ item, serial }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query] = useSearchParams();
-
   useEffect(() => {
     if (query.get("module") === item?._id) {
       setIsOpen(true);

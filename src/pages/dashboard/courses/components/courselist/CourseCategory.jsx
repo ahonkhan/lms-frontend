@@ -54,8 +54,8 @@ export const CourseCategory = () => {
             },
           }}
         >
-          {[...Array(8)].map((item) => (
-            <SwiperSlide>
+          {[...Array(8)].map((item, index) => (
+            <SwiperSlide key={index}>
               <div className="category-item text-center rounded-md bg-base-2 transition-all duration-300 hover:bg-base-3 select-none cursor-pointer py-4 px-4">
                 <p>Web development</p>
                 <p className="text-sm text-primary">12 Courses</p>

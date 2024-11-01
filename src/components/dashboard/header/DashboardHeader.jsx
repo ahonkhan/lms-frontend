@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GoSearch } from "react-icons/go";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { LuBell } from "react-icons/lu";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { GetRootContext } from "../../../contexts/RootContext";
 
 export const DashboardHeader = () => {
+  const rootContext = useContext(GetRootContext);
   return (
     <header className="fixed top-0 left-0 w-full bg-base-2 h-[60px] flex items-center lg:h-[62px] 2xl:h-[65px] z-[200]">
       <div className="p-0 md:pl-[280px] 2xl:pl-[310px] w-full">
         <nav className="flex justify-between w-full gap-x-6 items-center db-container">
           <div className="nav-button shrink-0">
-            <button className="text-xl text-white">
+            <button
+              onClick={() => rootContext.setDashboardSidebarOpen(true)}
+              className="text-xl text-white"
+            >
               <RxHamburgerMenu />
             </button>
           </div>

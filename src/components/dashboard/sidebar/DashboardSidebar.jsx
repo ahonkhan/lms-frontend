@@ -9,6 +9,8 @@ import { RiHomeSmile2Line } from "react-icons/ri";
 import { TiBookmark } from "react-icons/ti";
 import { Link, NavLink } from "react-router-dom";
 import { GetAuthContext } from "../../../contexts/AuthContext";
+import { GetRootContext } from "../../../contexts/RootContext";
+import { IoMdClose } from "react-icons/io";
 
 const DashboardSidebar = () => {
   const dashboardMenu = [
@@ -58,19 +60,33 @@ const DashboardSidebar = () => {
   ];
 
   const authContext = useContext(GetAuthContext);
+  const rootContext = useContext(GetRootContext);
   return (
-    <aside className="bg-base-2 -translate-x-full md:translate-x-0 border-r border-base-3 border-opacity-30 w-full md:w-[280px] 2xl:w-[310px] fixed z-[250] top-0 left-0 ">
+    <aside
+      className={`bg-base-2 ${
+        rootContext.dashboardSidebarOpen ? "" : "-translate-x-full"
+      }  md:translate-x-0 border-r border-base-3 duration-300 border-opacity-30 w-full md:w-[280px] 2xl:w-[310px] fixed z-[250] top-0 left-0 `}
+    >
       <div className="h-screen flex flex-col justify-between px-8">
-        <div className="dashboard-header gap-x-6 shrink-0 flex items-center justify-center py-8">
-          <Link
-            to={localStorage.getItem("currentRoute") ?? "/"}
-            className="h-8 w-10 bg-primary text-white flex items-center justify-center rounded-sm"
+        <div className="dashboard-header gap-x-6 shrink-0 flex items-center justify-between py-8">
+          <div className="flex items-center gap-x-4">
+            <Link
+              to={localStorage.getItem("currentRoute") ?? "/"}
+              className="h-8 w-10 bg-primary text-white flex items-center justify-center rounded-sm"
+            >
+              <IoArrowBack className="text-xl" />
+            </Link>
+            <p className="text-2xl font-bold text-white text-center tracking-widest">
+              Skillup
+            </p>
+          </div>
+
+          <button
+            onClick={() => rootContext.setDashboardSidebarOpen(false)}
+            className="text-2xl md:hidden "
           >
-            <IoArrowBack className="text-xl" />
-          </Link>
-          <p className="text-2xl font-bold text-white text-center tracking-widest">
-            Skillup
-          </p>
+            <IoMdClose />
+          </button>
         </div>
         <div className="sidebar-menu h-full">
           <ul className="grid gap-y-2">
@@ -80,6 +96,9 @@ const DashboardSidebar = () => {
                   return (
                     <li key={item?.id}>
                       <NavLink
+                        onClick={() =>
+                          rootContext.setDashboardSidebarOpen(false)
+                        }
                         to={item?.path}
                         className={({ isActive }) =>
                           isActive && item.path === "/dashboard"
@@ -104,6 +123,7 @@ const DashboardSidebar = () => {
                 return (
                   <li key={item?.id}>
                     <NavLink
+                      onClick={() => rootContext.setDashboardSidebarOpen(false)}
                       to={item?.path}
                       className={({ isActive }) =>
                         isActive && item.path === "/dashboard"
