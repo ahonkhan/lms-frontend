@@ -51,16 +51,29 @@ export const Header = () => {
             </Link>
           )}
 
-          <Link
-            onClick={setCurrentRoute}
-            to={"/dashboard"}
-            className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-4 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
-          >
-            Dashboard
-            <span className="text-xl group-hover:translate-x-1 duration-300">
-              <GrFormNextLink />
-            </span>
-          </Link>
+          {authContext.user ? (
+            <Link
+              onClick={setCurrentRoute}
+              to={"/dashboard"}
+              className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-4 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
+            >
+              Dashboard
+              <span className="text-xl group-hover:translate-x-1 duration-300">
+                <GrFormNextLink />
+              </span>
+            </Link>
+          ) : (
+            <Link
+              onClick={setCurrentRoute}
+              to={"/login"}
+              className="bg-primary active:scale-[0.98] duration-150 group gap-x-2 px-4 rounded-lg font-medium text-white text-center flex items-center justify-center py-2"
+            >
+              Login
+              <span className="text-xl group-hover:translate-x-1 duration-300">
+                <GrFormNextLink />
+              </span>
+            </Link>
+          )}
 
           <button
             onClick={() => {
