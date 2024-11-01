@@ -108,7 +108,7 @@ export const RecentCourseCard = ({ item }) => {
   );
 };
 
-export const EnrolledCourseCard = ({ item}) => {
+export const EnrolledCourseCard = ({ item }) => {
   return (
     <div className="course-item cursor-pointer bg-base-3 shadow-lg rounded-md">
       <div className="relative group">
@@ -117,13 +117,12 @@ export const EnrolledCourseCard = ({ item}) => {
 
       <div className="course-desc px-4 py-4">
         <h2 className="text-xl text-white tracking-tight leading-6">
-          {item?.name}
+          {item?.name} Batch {item?.batch}
         </h2>
         <div className="flex items-center mt-4 gap-x-4">
           <div className="module">
             <p>{item?.courseModules?.length || "0"} modules</p>
           </div>
-         
         </div>
 
         <Link
