@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { ButtonLoader } from "../../loader/Loader";
 import { useDispatch } from "react-redux";
 import { addCourseModule } from "../../../redux/slice/courseModuleSlice";
+import courseApiSlice from "../../../redux/api/courseApiSlice";
 
 const CourseModuleAddModal = () => {
   const modalContext = useContext(GetModalContext);
@@ -46,6 +47,7 @@ const CourseModuleAddModal = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(addCourseModule(data?.module));
+      dispatch(courseApiSlice.util.invalidateTags(["Course"]));
       toast.success("Module created successfully.");
       modalContext.setCreateModuleModal(false);
       setName("");

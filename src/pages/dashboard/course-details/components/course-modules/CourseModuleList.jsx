@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SectionTitleDashboard } from "../../../../../components/typography/Typography";
 import { IoPlayCircleOutline } from "react-icons/io5";
 import { MdOutlineAssignmentLate } from "react-icons/md";
@@ -9,19 +9,35 @@ import { GetModalContext } from "../../../../../contexts/ModalContext";
 import courseModuleApiSlice from "../../../../../redux/api/courseModuleApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { GetAuthContext } from "../../../../../contexts/AuthContext";
+import { addInitialModules } from "../../../../../redux/slice/courseModuleSlice";
 
 const CourseModuleList = () => {
   const params = useParams();
   const courseID = params.slug;
   const modalContext = useContext(GetModalContext);
   const authContext = useContext(GetAuthContext);
-  const { isLoading, data } =
-    courseModuleApiSlice.useFetchAllCourseModulesQuery(courseID);
+  const dispatch = useDispatch();
+  const [modules, setModules] = useState([]);
   const courseModule = useSelector((state) => state.courseModule);
+  const { isLoading, data, isSuccess, isError } =
+    courseModuleApiSlice.useFetchAllCourseModulesQuery(courseID);
+
+  useEffect(() => {
+    if (isSuccess && data?.modules) {
+      const firstModule = courseModule?.modules;
+      if (firstModule && firstModule[0]?.course !== courseID) {
+        dispatch(addInitialModules(data.modules));
+      }
+    }
+  }, [isSuccess, data, dispatch]);
+
+  useEffect(() => {
+    setModules(courseModule.modules.filter((item) => item.course === courseID));
+  }, [courseModule.modules]);
+
   if (isLoading) {
     return <>Loading course modules</>;
   }
-
 
   return (
     <div className="mt-content">
@@ -42,7 +58,7 @@ const CourseModuleList = () => {
       </div>
       <div className="mt-content">
         <div className="module-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-5">
-          {courseModule.modules.map((item, index) => (
+          {modules.map((item, index) => (
             <ModuleCard
               enrolled={data?.enrolled}
               key={item?._id}

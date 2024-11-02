@@ -15,7 +15,6 @@ const courseModuleApiSlice = createApi({
       return headers;
     },
   }),
-
   endpoints: (builder) => ({
     createCourseModule: builder.mutation({
       query: ({ name, description, course, startDate, endDate }) => ({
@@ -31,23 +30,12 @@ const courseModuleApiSlice = createApi({
       }),
     }),
     fetchAllCourseModules: builder.query({
-      query: (course) => "/user/course-module?course=" + course,
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          dispatch(addInitialModules([]));
-          const { data } = await queryFulfilled;
-          dispatch(addInitialModules(data.modules));
-        } catch (error) {
-          console.log(error.message);
-        }
-      },
-      keepUnusedDataFor: 0,
+      query: (course) => "/user/get-all-course-module/" + course,
     }),
     fetchCourseModulesWithLessons: builder.query({
       query: (course) => "/user/course/" + course,
       keepUnusedDataFor: 0,
     }),
-    
   }),
 });
 

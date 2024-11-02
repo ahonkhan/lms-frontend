@@ -11,6 +11,7 @@ import moduleLessonApiSlice from "../../../redux/api/moduleLessonApiSlice";
 import { useDispatch } from "react-redux";
 import { addCourseLessons } from "../../../redux/slice/courseSlice";
 import { ButtonLoader } from "../../loader/Loader";
+import { addLessonToModule } from "../../../redux/slice/courseModuleSlice";
 
 const ModuleLessonCreateModal = () => {
   const modalContext = useContext(GetModalContext);
@@ -37,6 +38,7 @@ const ModuleLessonCreateModal = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(addCourseLessons(data.lesson));
+      dispatch(addLessonToModule(data.lesson));
       toast.success("Lesson added successfully!");
       setDescription("");
       setVideo("");

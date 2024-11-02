@@ -14,6 +14,7 @@ const courseApiSlice = createApi({
       return headers;
     },
   }),
+  tagTypes: ["Course"],
 
   endpoints: (builder) => ({
     createCourse: builder.mutation({
@@ -44,6 +45,7 @@ const courseApiSlice = createApi({
           console.log(error.message);
         }
       },
+      providesTags: (_) => ["Course"],
     }),
     deleteCourse: builder.mutation({
       query: (id) => ({

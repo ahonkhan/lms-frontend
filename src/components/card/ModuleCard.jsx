@@ -8,6 +8,7 @@ import { GetAuthContext } from "../../contexts/AuthContext";
 
 const ModuleCard = ({ item, serial, enrolled }) => {
   const authContext = useContext(GetAuthContext);
+  console.log(item?.lessons);
   return (
     <div className="module-card cursor-pointer border border-base-3 border-opacity-50 hover:border-primary duration-200 bg-base-2 p-5 rounded">
       <div className="module-card-header pb-4 border-b border-b-base-3 border-opacity-30 flex justify-between items-center">
@@ -40,7 +41,7 @@ const ModuleCard = ({ item, serial, enrolled }) => {
           <div className="icon text-xl">
             <IoPlayCircleOutline />
           </div>
-          <p>{item?.totalLessonCount} Videos</p>
+          <p>{item?.lessons?.length} Videos</p>
         </div>
         {/* <div className="flex items-center gap-x-2">
           <div className="icon text-xl">

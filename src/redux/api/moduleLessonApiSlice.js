@@ -31,17 +31,17 @@ const moduleLessonApiSlice = createApi({
       }),
     }),
     fetchAllCourseModulesLessons: builder.query({
-      query: (module) => "/user/module-lesson?module=" + module,
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          dispatch(addInitialCourseLesson([]));
-          const { data } = await queryFulfilled;
-          dispatch(addInitialCourseLesson(data.moduleLessons));
-        } catch (error) {
-          console.log(error.message);
-        }
-      },
-      keepUnusedDataFor: 0,
+      query: (module) => "/user/get-all-module-lesson/" + module,
+      // async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      //   try {
+      //     dispatch(addInitialCourseLesson([]));
+      //     const { data } = await queryFulfilled;
+      //     dispatch(addInitialCourseLesson(data.moduleLessons));
+      //   } catch (error) {
+      //     console.log(error.message);
+      //   }
+      // },
+      // keepUnusedDataFor: 0,
     }),
 
     getSingleModuleLesson: builder.query({
