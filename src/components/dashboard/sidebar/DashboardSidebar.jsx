@@ -13,6 +13,7 @@ import { GetRootContext } from "../../../contexts/RootContext";
 import { IoMdClose } from "react-icons/io";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { ButtonPrimary, ButtonSecondary } from "../../button/Button";
+import { handleLogout } from "../../../utils/utils";
 
 const DashboardSidebar = () => {
   const dashboardMenu = [
@@ -114,16 +115,10 @@ const DashboardSidebar = () => {
                 </div>
               </div>
               <div className="dropdown-content mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <ButtonPrimary
-                  onClick={handleLinkClick}
-                  link={true}
-                  path="/"
-                >
+                <ButtonPrimary onClick={handleLinkClick} link={true} path="/">
                   Home
                 </ButtonPrimary>
-                <ButtonSecondary onClick={() => handleLogout()}>
-                  Logout
-                </ButtonSecondary>
+                <ButtonSecondary onClick={handleLogout}>Logout</ButtonSecondary>
               </div>
             </div>
           )}
