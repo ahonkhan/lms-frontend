@@ -117,7 +117,7 @@ const DashboardSidebar = () => {
                 <ButtonPrimary
                   onClick={handleLinkClick}
                   link={true}
-                  path="/dashboard/settings"
+                  path="/"
                 >
                   Home
                 </ButtonPrimary>
