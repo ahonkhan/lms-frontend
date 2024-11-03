@@ -6,6 +6,9 @@ import { menuData } from "../../data/menuData";
 import { GrFormNextLink } from "react-icons/gr";
 import { GetRootContext } from "../../contexts/RootContext";
 import { GetAuthContext } from "../../contexts/AuthContext";
+import { ButtonPrimary, ButtonSecondary } from "../button/Button";
+import { handleLogout } from "../../utils/utils";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 export const Header = () => {
   const authContext = useContext(GetAuthContext);
@@ -13,7 +16,7 @@ export const Header = () => {
     localStorage.setItem("currentRoute", location.href);
   };
   const rootContext = useContext(GetRootContext);
-
+  const [isOpen, setISOpen] = useState(false);
   return (
     <header
       className={`h-[65px] sticky top-0 flex items-center site-container w-full z-[300]  bg-base-3 bg-opacity-90`}
@@ -41,15 +44,6 @@ export const Header = () => {
           <Link to={"/"} className="text-xl ">
             <BiBell />
           </Link>
-          {authContext.user ? (
-            <Link to={"/dashboard/settings"} className="text-xl">
-              <BiUser />
-            </Link>
-          ) : (
-            <Link to={"/login"} className="text-xl">
-              <BiUser />
-            </Link>
-          )}
 
           {authContext.user ? (
             <Link
@@ -74,7 +68,55 @@ export const Header = () => {
               </span>
             </Link>
           )}
-
+          {authContext.user && (
+            <div className="hidden md:block relative">
+              {authContext.user?.profilePicture ? (
+                <img
+                  onClick={() => setISOpen(!isOpen)}
+                  src={authContext.user?.profilePicture}
+                  className="w-10 h-10 rounded-full cursor-pointer border-2 border-base-2 border-opacity-40"
+                  alt=""
+                />
+              ) : (
+                <button onClick={() => setISOpen(!isOpen)} className="flex items-center justify-center">
+                  <FaRegCircleUser className="text-2xl cursor-pointer" />
+                </button>
+              )}
+              <div
+                className={`absolute grid  ${
+                  isOpen ? "grid-rows-1" : "grid-rows-[0]"
+                } overflow-hidden duration-300 w-auto  mt-2 right-0 bg-indigo-500 rounded-md shadow-md`}
+              >
+                <div className="w-[350px] p-2">
+                  <div className="dropdown-header hover:bg-base-3 cursor-pointer duration-300 pb-2  p-4 rounded-lg bg-opacity-35 bg-base-3 flex items-center gap-x-3">
+                    <div className="image shrink-0">
+                      {authContext.user?.profilePicture ? (
+                        <img
+                          src={authContext.user?.profilePicture}
+                          className="w-12 h-12 rounded-full border-2 border-base-2 border-opacity-40"
+                          alt=""
+                        />
+                      ) : (
+                        <FaRegCircleUser className="text-2xl" />
+                      )}
+                    </div>
+                    <div className="info">
+                      <h2>{authContext.user.fullName}</h2>
+                      <p>{authContext.user.email}</p>
+                    </div>
+                  </div>
+                  <div className="dropdown-content mt-4 grid grid-cols-2 gap-x-4">
+                    <ButtonPrimary link={true} path="/dashboard/settings">
+                      Profile
+                    </ButtonPrimary>
+                    <ButtonSecondary onClick={() => handleLogout()}>
+                      Logout
+                    </ButtonSecondary>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
           <button
             onClick={() => {
               rootContext.setSidebarOpen(true);

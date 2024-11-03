@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { IoMdClose } from "react-icons/io";
-import { ButtonPrimary } from "../button/Button";
+import { ButtonPrimary, ButtonSecondary } from "../button/Button";
 import { menuData } from "../../data/menuData";
 import { NavLink } from "react-router-dom";
 import { GetRootContext } from "../../contexts/RootContext";
 import { GetAuthContext } from "../../contexts/AuthContext";
+import { BiUser } from "react-icons/bi";
+import { handleLogout } from "../../utils/utils";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const GlobalSidebar = () => {
   const rootContext = useContext(GetRootContext);
@@ -13,7 +16,7 @@ const GlobalSidebar = () => {
     rootContext.setSidebarOpen(false);
   };
   return (
-    <div>
+    <div className="lg:hidden">
       <div
         className={`fixed ${
           rootContext.sidebarOpen
@@ -38,6 +41,37 @@ const GlobalSidebar = () => {
               <IoMdClose />
             </button>
           </div>
+        </div>
+        <div className="">
+          {authContext.user && (
+            <div className="w-full p-2">
+              <div className="dropdown-header pb-2 flex-col sm:flex-row sm:text-start text-center  p-4 rounded-lg bg-opacity-35 bg-base-3 flex items-center gap-3">
+                <div className="image shrink-0">
+                  {authContext.user?.profilePicture ? (
+                    <img
+                      src={authContext.user?.profilePicture}
+                      className="w-12 h-12 rounded-full border-2 border-base-2 border-opacity-40"
+                      alt=""
+                    />
+                  ) : (
+                    <FaRegCircleUser className="text-3xl" />
+                  )}
+                </div>
+                <div className="info">
+                  <h2>{authContext.user.fullName}</h2>
+                  <p>{authContext.user.email}</p>
+                </div>
+              </div>
+              <div className="dropdown-content mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <ButtonPrimary link={true} path="/dashboard/settings">
+                  Profile
+                </ButtonPrimary>
+                <ButtonSecondary onClick={() => handleLogout()}>
+                  Logout
+                </ButtonSecondary>
+              </div>
+            </div>
+          )}
         </div>
         <menu className="sidebar-menu h-full flex flex-col py-4">
           <ul className="flex flex-col h-full gap-4 uppercase font-medium">

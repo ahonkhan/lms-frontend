@@ -11,6 +11,8 @@ import { Link, NavLink } from "react-router-dom";
 import { GetAuthContext } from "../../../contexts/AuthContext";
 import { GetRootContext } from "../../../contexts/RootContext";
 import { IoMdClose } from "react-icons/io";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { ButtonPrimary, ButtonSecondary } from "../../button/Button";
 
 const DashboardSidebar = () => {
   const dashboardMenu = [
@@ -65,7 +67,7 @@ const DashboardSidebar = () => {
     <aside
       className={`bg-base-2 ${
         rootContext.dashboardSidebarOpen ? "" : "-translate-x-full"
-      }  md:translate-x-0 border-r border-base-3 duration-300 border-opacity-30 w-full md:w-[280px] 2xl:w-[310px] fixed z-[250] top-0 left-0 `}
+      }  lg:translate-x-0 border-r border-base-3 duration-300 border-opacity-30 w-full sm:w-[350px] lg:w-[280px] 2xl:w-[310px] fixed z-[250] top-0 left-0 `}
     >
       <div className="h-screen flex flex-col justify-between px-8">
         <div className="dashboard-header gap-x-6 shrink-0 flex items-center justify-between py-8">
@@ -83,12 +85,43 @@ const DashboardSidebar = () => {
 
           <button
             onClick={() => rootContext.setDashboardSidebarOpen(false)}
-            className="text-2xl md:hidden "
+            className="text-2xl lg:hidden "
           >
             <IoMdClose />
           </button>
         </div>
-        <div className="sidebar-menu h-full">
+        <div className="md:hidden">
+          {authContext.user && (
+            <div className="w-full p-2">
+              <div className="dropdown-header pb-2 flex-col sm:flex-row sm:text-start text-center  p-4 rounded-lg bg-opacity-35  flex items-center gap-3">
+                <div className="image shrink-0">
+                  {authContext.user?.profilePicture ? (
+                    <img
+                      src={authContext.user?.profilePicture}
+                      className="w-12 h-12 rounded-full border-2 border-base-2 border-opacity-40"
+                      alt=""
+                    />
+                  ) : (
+                    <FaRegCircleUser className="text-3xl" />
+                  )}
+                </div>
+                <div className="info">
+                  <h2>{authContext.user.fullName}</h2>
+                  <p>{authContext.user.email}</p>
+                </div>
+              </div>
+              <div className="dropdown-content mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <ButtonPrimary link={true} path="/dashboard/settings">
+                  Profile
+                </ButtonPrimary>
+                <ButtonSecondary onClick={() => handleLogout()}>
+                  Logout
+                </ButtonSecondary>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="sidebar-menu mt-4 h-full">
           <ul className="grid gap-y-2">
             {dashboardMenu.map((item) => {
               if (item.role === "admin") {

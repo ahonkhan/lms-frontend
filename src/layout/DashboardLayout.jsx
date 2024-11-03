@@ -13,7 +13,7 @@ export const DashboardLayout = () => {
     <>
       <DashboardSidebar />
       <DashboardHeader />
-      <div className="p-0 md:pl-[280px] 2xl:pl-[310px] pt-[60px] lg:pt-[62px] 2xl:pt-[65px]">
+      <div className="p-0 lg:pl-[280px] 2xl:pl-[310px] pt-[60px] lg:pt-[62px] 2xl:pt-[65px]">
         <div className="db-container pt-4 lg:pt-5">
           <Outlet />
         </div>

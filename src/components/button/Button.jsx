@@ -49,3 +49,37 @@ export const ButtonPrimary = ({
     );
   }
 };
+export const ButtonSecondary = ({
+  children,
+  width = "full",
+  link = false,
+  path = "",
+  ...props
+}) => {
+  if (link) {
+    return (
+      <Link
+        to={path}
+        {...props}
+        className={`bg-teal-500 w-full text-center block ${
+          width === "auto" && "w-auto"
+        } ${
+          width === "full" && "w-full"
+        } px-8 py-2 duration-200  text-white  rounded-lg active:scale-[0.98]`}
+      >
+        {children}
+      </Link>
+    );
+  } else {
+    return (
+      <button
+        {...props}
+        className={`bg-teal-500 w-full ${width === "auto" && "w-auto"} ${
+          width === "full" && "w-full"
+        } px-8 py-2 duration-200  text-white  rounded-lg active:scale-[0.98]`}
+      >
+        {children}
+      </button>
+    );
+  }
+};
