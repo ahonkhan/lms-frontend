@@ -10,8 +10,8 @@ import { handleLogout } from "../../utils/utils";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const GlobalSidebar = () => {
-  const rootContext = useContext(GetRootContext);
   const authContext = useContext(GetAuthContext);
+  const rootContext = useContext(GetRootContext);
   const handleLinkClick = () => {
     rootContext.setSidebarOpen(false);
   };
@@ -63,10 +63,14 @@ const GlobalSidebar = () => {
                 </div>
               </div>
               <div className="dropdown-content mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <ButtonPrimary link={true} path="/dashboard/settings">
+                <ButtonPrimary
+                  onClick={handleLinkClick}
+                  link={true}
+                  path="/dashboard/settings"
+                >
                   Profile
                 </ButtonPrimary>
-                <ButtonSecondary onClick={() => handleLogout()}>
+                <ButtonSecondary  onClick={() => handleLogout()}>
                   Logout
                 </ButtonSecondary>
               </div>

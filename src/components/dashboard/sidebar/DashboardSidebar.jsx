@@ -63,6 +63,9 @@ const DashboardSidebar = () => {
 
   const authContext = useContext(GetAuthContext);
   const rootContext = useContext(GetRootContext);
+  const handleLinkClick = () => {
+    rootContext.setSidebarOpen(false);
+  };
   return (
     <aside
       className={`bg-base-2 ${
@@ -111,8 +114,12 @@ const DashboardSidebar = () => {
                 </div>
               </div>
               <div className="dropdown-content mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <ButtonPrimary link={true} path="/dashboard/settings">
-                  Profile
+                <ButtonPrimary
+                  onClick={handleLinkClick}
+                  link={true}
+                  path="/dashboard/settings"
+                >
+                  Home
                 </ButtonPrimary>
                 <ButtonSecondary onClick={() => handleLogout()}>
                   Logout
