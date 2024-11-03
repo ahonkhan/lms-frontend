@@ -64,7 +64,7 @@ const DashboardSidebar = () => {
   const authContext = useContext(GetAuthContext);
   const rootContext = useContext(GetRootContext);
   const handleLinkClick = () => {
-    rootContext.setSidebarOpen(false);
+    rootContext.setDashboardSidebarOpen(false);
   };
   return (
     <aside
