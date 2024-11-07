@@ -45,7 +45,7 @@ export const Header = () => {
             <BiBell />
           </Link>
 
-          {authContext.user ? (
+          {authContext?.user ? (
             <Link
               onClick={setCurrentRoute}
               to={"/dashboard"}
@@ -70,10 +70,10 @@ export const Header = () => {
           )}
           {authContext.user && (
             <div className="hidden md:block relative">
-              {authContext.user?.profilePicture ? (
+              {authContext?.user?.profilePicture ? (
                 <img
                   onClick={() => setISOpen(!isOpen)}
-                  src={authContext.user?.profilePicture}
+                  src={authContext?.user?.profilePicture}
                   className="w-10 h-10 rounded-full cursor-pointer border-2 border-base-2 border-opacity-40"
                   alt=""
                 />
@@ -90,9 +90,9 @@ export const Header = () => {
                 <div className="w-[350px] p-2">
                   <div className="dropdown-header hover:bg-base-3 cursor-pointer duration-300 pb-2  p-4 rounded-lg bg-opacity-35 bg-base-3 flex items-center gap-x-3">
                     <div className="image shrink-0">
-                      {authContext.user?.profilePicture ? (
+                      {authContext?.user?.profilePicture ? (
                         <img
-                          src={authContext.user?.profilePicture}
+                          src={authContext?.user?.profilePicture}
                           className="w-12 h-12 rounded-full border-2 border-base-2 border-opacity-40"
                           alt=""
                         />
@@ -101,8 +101,8 @@ export const Header = () => {
                       )}
                     </div>
                     <div className="info">
-                      <h2>{authContext.user.fullName}</h2>
-                      <p>{authContext.user.email}</p>
+                      <h2>{authContext?.user.fullName}</h2>
+                      <p>{authContext?.user.email}</p>
                     </div>
                   </div>
                   <div className="dropdown-content mt-4 grid grid-cols-2 gap-x-4">

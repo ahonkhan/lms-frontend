@@ -23,7 +23,6 @@ export const AuthContext = ({ children }) => {
     }
     if (isAuthError) {
       setIsLoading(false);
-      console.log(error);
     }
   }, [isAuthSuccess, isAuthError]);
 

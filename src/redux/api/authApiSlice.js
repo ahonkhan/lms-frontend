@@ -44,12 +44,24 @@ const authApiSlice = createApi({
         },
       }),
     }),
-    // getAuthInfo: builder.mutation({
-    //   query: () => ({
-    //     url: "/info",
-    //     method: "get",
-    //   }),
-    // }),
+    sendResetPasswordLink: builder.mutation({
+      query: ({ email, base_url }) => ({
+        url: "/password-reset-link",
+        method: "post",
+        body: { email: email, base_url: base_url },
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: ({ token, newPassword, retypePassword }) => ({
+        url: "/password-reset",
+        method: "post",
+        body: {
+          token: token,
+          newPassword: newPassword,
+          retypePassword: retypePassword,
+        },
+      }),
+    }),
 
     getAuthInfo: builder.query({
       query: () => "/info",
