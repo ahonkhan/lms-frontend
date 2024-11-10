@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import EnrollCourse from "./EnrollCourse";
 const GetButton = ({ course, enrolled }) => {
   const authContext = useContext(GetAuthContext);
-  if (authContext.user && authContext.user?.role !== "customer") {
+  if (authContext?.user && authContext?.user?.role !== "customer") {
     return (
       <Link
         to={"/dashboard/courses/" + course?._id}
@@ -65,7 +65,7 @@ export const CourseInfo = ({ course, lessonCount, enrolled, moduleCount }) => {
                 {moduleCount} modules
               </p>
             </div>
-            {authContext.user.role === "customer" && !enrolled && (
+            {authContext?.user?.role === "customer" && !enrolled && (
               <div className="mt-4">
                 <h1 className="bg-base-3 text-xl py-2 px-2 w-fit rounded border-b-2 border-primary">
                   Enroll before: {course?.startDate}
