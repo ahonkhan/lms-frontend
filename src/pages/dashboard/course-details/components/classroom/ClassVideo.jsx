@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import ClassVideoAction from "./ClassVideoAction";
 import { useDispatch, useSelector } from "react-redux";
 import { updateLessonProgress } from "../../../../../redux/slice/courseModuleSlice";
+import VideoPlayer from "./VideoPlayer";
 
 const ClassVideo = () => {
   const rootContext = useContext(GetRootContext);
@@ -23,14 +24,7 @@ const ClassVideo = () => {
     const lessonId = query.get("lesson");
     if (lessonId) {
       setIsFetching(true); // Set loading to true
-      getData(lessonId).finally(() => {
-        setIsFetching(false);
-        if (data?.lesson) {
-          dispatch(
-            updateLessonProgress({ lesson: data?.lesson, status: "playing" })
-          );
-        }
-      }); // Reset loading on response
+      getData(lessonId).finally(() => setIsFetching(false)); // Reset loading on response
     }
   }, [query.toString()]);
 
@@ -38,22 +32,11 @@ const ClassVideo = () => {
     return <LoaderPage />;
   }
 
+
+
   return (
     <div className="course-play w-full h-fit ">
-      <div className="video-player w-full h-[310px]  sm:h-[400px] md:h-[370px] lg:h-[550px] xl:h-[450px] 2xl:h-[650px]">
-        {data?.lesson?.video ? (
-          <ReactPlayer
-            controls
-            url={data?.lesson?.video}
-            width={"100%"}
-            height={"100%"}
-          />
-        ) : (
-          <div className="w-full h-full bg-base-2 flex items-center justify-center">
-            Video not published
-          </div>
-        )}
-      </div>
+      <VideoPlayer lesson={data?.lesson} />
       <div className=" bg-base-3 bg-opacity-15 py-4 px-4">
         <div className="__action">
           <ClassVideoAction />
