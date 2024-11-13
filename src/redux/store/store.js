@@ -35,6 +35,7 @@ const store = configureStore({
       userApiSlice.middleware
     );
   },
+  // devTools: true,
 });
 
 export default store;

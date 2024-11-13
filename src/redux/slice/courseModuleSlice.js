@@ -4,6 +4,7 @@ const courseModuleSlice = createSlice({
   name: "courseModule",
   initialState: {
     modules: [],
+    playlist: [],
   },
   reducers: {
     addCourseModule: (state, action) => {
@@ -51,9 +52,51 @@ const courseModuleSlice = createSlice({
     //     (item) => item._id !== action.payload
     //   );
     // },
+    addInitialPlaylist: (state, action) => {
+      state.playlist = action.payload;
+    },
+
+    updateLessonProgress: (state, action) => {
+      const lesson = action.payload.lesson;
+      const status = action.payload.status;
+      const courseModule = lesson?.courseModule;
+
+      // Find the module and lesson
+      const updatedPlaylist = state.playlist.map((module) => {
+        if (module._id === courseModule) {
+          const updatedLessons = module.lessons.map((item) => {
+            if (item._id === lesson._id) {
+              // Update the lesson progress status
+              return {
+                ...item,
+                lessonProgress: {
+                  ...item.lessonProgress,
+                  status: status,
+                },
+              };
+            }
+            return item; // return the lesson as is if not the target
+          });
+
+          return {
+            ...module,
+            lessons: updatedLessons,
+          };
+        }
+        return module; // return the module as is if not the target
+      });
+
+      // Set the new playlist
+      state.playlist = updatedPlaylist;
+    },
   },
 });
 
-export const { addCourseModule, addInitialModules, addLessonToModule } =
-  courseModuleSlice.actions;
+export const {
+  addCourseModule,
+  addInitialModules,
+  addLessonToModule,
+  addInitialPlaylist,
+  updateLessonProgress,
+} = courseModuleSlice.actions;
 export default courseModuleSlice.reducer;

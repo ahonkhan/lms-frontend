@@ -48,6 +48,12 @@ const moduleLessonApiSlice = createApi({
       query: (lesson) => "/user/module-lesson/" + lesson,
       keepUnusedDataFor: 0,
     }),
+    markAsCompleted: builder.mutation({
+      query: (lesson) => ({
+        url: "/user/mark-as-completed/" + lesson,
+        method: "post",
+      }),
+    }),
   }),
 });
 

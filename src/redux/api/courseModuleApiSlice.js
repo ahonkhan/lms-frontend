@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { API_BASE_URL } from "../../config/config";
-import { addInitialModules } from "../slice/courseModuleSlice";
+import {
+  addInitialModules,
+  addInitialPlaylist,
+} from "../slice/courseModuleSlice";
 
 const courseModuleApiSlice = createApi({
   reducerPath: "api/courseModule",
@@ -34,7 +37,14 @@ const courseModuleApiSlice = createApi({
     }),
     fetchCourseModulesWithLessons: builder.query({
       query: (course) => "/user/course/" + course,
-      keepUnusedDataFor: 0,
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(addInitialPlaylist(data.modules));
+        } catch (error) {
+          console.log(error.message);
+        }
+      },
     }),
   }),
 });

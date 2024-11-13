@@ -49,7 +49,7 @@ const ClassRoom = () => {
       <div className="course-play-area gap-y-4 mt-content  flex-col xl:flex-row flex gap-x-5 xl:gap-x-6 2xl:gap-x-10 justify-between">
         <ClassVideo />
         <div className="course-modules h-fit shrink-0 hidden xl:block rounded-md bg-opacity-50 bg-base-3">
-          <ClassModule item={data?.modules} setCourseTitle={setTitle} />
+          <ClassModule setCourseTitle={setTitle} />
         </div>
       </div>
       <div className="mt-content"></div>

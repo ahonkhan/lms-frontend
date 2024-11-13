@@ -22,6 +22,7 @@ const userApiSlice = createApi({
         body: formData,
       }),
     }),
+  
   }),
 });
 

@@ -6,20 +6,27 @@ import moduleLessonApiSlice from "../../../../../redux/api/moduleLessonApiSlice"
 import { Navigate, useLocation, useSearchParams } from "react-router-dom";
 import { LoaderPage } from "../../../../../components/loader/Loader";
 import toast from "react-hot-toast";
+import ClassVideoAction from "./ClassVideoAction";
+import { useDispatch, useSelector } from "react-redux";
+import { updateLessonProgress } from "../../../../../redux/slice/courseModuleSlice";
 
 const ClassVideo = () => {
   const rootContext = useContext(GetRootContext);
   const location = useLocation();
   const [query] = useSearchParams();
+  const dispatch = useDispatch();
   const [isFetching, setIsFetching] = useState(false); // Manual loading state
   const [getData, { data, isError, isSuccess, error }] =
     moduleLessonApiSlice.useLazyGetSingleModuleLessonQuery();
-
+  const modules = useSelector((state) => state.courseModule);
   useEffect(() => {
     const lessonId = query.get("lesson");
     if (lessonId) {
       setIsFetching(true); // Set loading to true
-      getData(lessonId).finally(() => setIsFetching(false)); // Reset loading on response
+      getData(lessonId).finally(() => {
+        setIsFetching(false);
+      
+      }); // Reset loading on response
     }
   }, [query.toString()]);
 
@@ -44,7 +51,10 @@ const ClassVideo = () => {
         )}
       </div>
       <div className=" bg-base-3 bg-opacity-15 py-4 px-4">
-        <div className="classroom-tabs flex-wrap gap-y-4 border-b pb-4 border-b-base-3 flex items-center justify-between gap-x-4">
+        <div className="__action">
+          <ClassVideoAction />
+        </div>
+        <div className="classroom-tabs mt-4 flex-wrap gap-y-4 border-b pb-4 border-b-base-3 flex items-center justify-between gap-x-4">
           <div className="flex items-center gap-x-4">
             <button className="bg-primary px-6 py-2 rounded text-white">
               Description

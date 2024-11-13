@@ -3,6 +3,47 @@ import { IoIosArrowDown } from "react-icons/io";
 import { MdPlayCircleOutline } from "react-icons/md";
 import { NavLink, useSearchParams } from "react-router-dom";
 import { GetRootContext } from "../../../../../contexts/RootContext";
+import { AiOutlinePauseCircle } from "react-icons/ai";
+import { TbPlaystationCircle } from "react-icons/tb";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import { BsPlay } from "react-icons/bs";
+import { RiPlayLine } from "react-icons/ri";
+
+const GetStatusIcon = ({ lesson }) => {
+  const [query] = useSearchParams();
+  // console.log(lesson);
+  if (query.get("lesson") === lesson?._id) {
+    return (
+      <div className={`text-base ${"text-primary"}`}>
+        {/* <TbPlaystationCircle /> */}
+        <div className="w-6 relative h-6 flex items-center justify-center rounded-full">
+          <RiPlayLine className="text-base" />
+          <div className="absolute w-full border-l-transparent animate-spin h-full border border-primary  rounded-full"></div>
+        </div>
+      </div>
+    );
+  } else {
+    if (lesson?.lessonProgress?.status === "playing") {
+      return (
+        <div className={`text-xl ${"text-green-500"}`}>
+          <AiOutlinePauseCircle />
+        </div>
+      );
+    } else if (lesson?.lessonProgress?.status === "completed") {
+      return (
+        <div className={`text-xl ${"text-green-500"}`}>
+          <IoCheckmarkCircleOutline />
+        </div>
+      );
+    } else {
+      return (
+        <div className={`text-xl ${"text-red-500"}`}>
+          <MdPlayCircleOutline />
+        </div>
+      );
+    }
+  }
+};
 
 const ModuleItem = ({ item, serial }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +56,7 @@ const ModuleItem = ({ item, serial }) => {
       setIsOpen(false);
     }
   }, [query.toString()]);
+
   return (
     <div
       className={`module-item select-none ${
@@ -51,13 +93,7 @@ const ModuleItem = ({ item, serial }) => {
             >
               <div className="video-item cursor-pointer flex justify-between items-center gap-x-4">
                 <div className="flex items-start gap-x-2">
-                  <div
-                    className={`text-xl ${
-                      query.get("lesson") === lesson?._id ? "text-primary" : ""
-                    }`}
-                  >
-                    <MdPlayCircleOutline />
-                  </div>
+                  <GetStatusIcon lesson={lesson} />
                   <div className="">
                     <p className="text-gray-1 text-sm">
                       {`${index + 1} )`} {lesson?.name}

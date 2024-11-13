@@ -3,10 +3,13 @@ import { IoMdClose } from "react-icons/io";
 import { useSearchParams } from "react-router-dom";
 import ModuleItem from "./ModuleItem";
 import { GetRootContext } from "../../../../../contexts/RootContext";
-import courseModuleApiSlice from "../../../../../redux/api/courseModuleApiSlice";
+import { useSelector } from "react-redux";
+// import courseModuleApiSlice from "../../../../../redux/api/courseModuleApiSlice";
 
-const ClassModule = ({ item }) => {
+const ClassModule = () => {
   const rootContext = useContext(GetRootContext);
+  const modules = useSelector((state) => state.courseModule);
+  // console.log(modules?.playlist);
 
   return (
     <div className=" bg-base-2  rounded-md flex flex-col justify-between bg-opacity-50 w-full xl:w-[360px] 2xl:w-[400px] h-full xl:h-[800px]">
@@ -22,8 +25,7 @@ const ClassModule = ({ item }) => {
         </div>
       </div>
       <div className="course-module-list mt-2 h-full gap-y-2 flex flex-col overflow-y-auto">
-        {item?.map((item, index) => (
-
+        {modules?.playlist?.map((item, index) => (
           <ModuleItem key={item?._id} item={item} serial={index + 1} />
         ))}
       </div>
