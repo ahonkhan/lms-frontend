@@ -25,7 +25,11 @@ const ClassVideo = () => {
       setIsFetching(true); // Set loading to true
       getData(lessonId).finally(() => {
         setIsFetching(false);
-      
+        if (data?.lesson) {
+          dispatch(
+            updateLessonProgress({ lesson: data?.lesson, status: "playing" })
+          );
+        }
       }); // Reset loading on response
     }
   }, [query.toString()]);
